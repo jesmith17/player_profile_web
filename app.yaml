@@ -1,0 +1,17 @@
+runtime: nodejs20
+
+service: player-profile
+
+handlers:
+
+- url: /(.*\.(gif|png|jpg|css|js|woff|woff2|ttf|eot|svg|ico)(|\.map))$
+  static_files: dist/player-profile/\1
+  upload: dist/player-profile/(.*\.(gif|png|jpg|css|js|woff|woff2|ttf|eot|svg|ico)(|\.map))$
+
+- url: /assets/(.*)
+  static_files: dist/player-profile/assets
+  upload: dist/player-profile/assets/(.*)
+
+- url: /(.*)
+  static_files: dist/player-profile/index.html
+  upload: dist/player-profile/index.html  

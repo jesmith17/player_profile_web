@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-gradient-dark bg-white py-3">
+    <div class="container">
+      <span class="navbar-brand text-gradiant text-white text-lg">  Player Profile</span>
+      <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon mt-2">
+          <span class="navbar-toggler-bar bar1"></span>
+          <span class="navbar-toggler-bar bar2"></span>
+          <span class="navbar-toggler-bar bar3"></span>
+        </span>
+      </button>
+      <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0 ms-lg-12 ps-lg-5" id="navigation">
+        <ul class="navbar-nav navbar-nav-hover w-100">
+          <li class="nav-item my-auto ms-3 ms-lg-0 d-none d-md-block">
+            <a [routerLink]="['/profile/search']" class="btn btn-md bg-gradient-info btn-round mb-0 me-1 mt-2 mt-md-0">Profile Search</a>
+          </li>
+          <li class="nav-item my-auto ms-3 ms-lg-0 d-block d-md-none">
+            <a [routerLink]="['/profile/search']" class="mb-0 me-1 mt-2 mt-md-0 text-white">Profile Search</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+

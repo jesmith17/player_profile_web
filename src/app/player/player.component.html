@@ -1,0 +1,149 @@
+<div  *ngIf="data | async as data">
+<section class="py-sm-2 py-1 ">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 mx-auto">
+          <div class="row py-lg-5 py-3">
+            <div class="col-lg-3 col-md-5 col-sm-12 my-auto">
+                <img class="img border-radius-lg  z-index-2 img-fluid" src="{{data.picUrl}}" alt="Lydia">
+                <p class="text-lg text-secondary"><a href="mailto:{{data.email}}"><i class="fa fa-envelope px-2"></i>{{data.email}}</a></p>
+            </div>
+            <div class="col-lg-9  col-md-8 z-index-2 px-md-2 px-sm-5 mt-sm-0 mt-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h2 class="mb-0 text-gradiant text-dark">{{data.firstName}} {{data.lastName}}</h2><h2 class="mb-0 text-end text-gradiant text-dark">Class Of {{data.academics.gradYear}}</h2>
+                <!-- Lets keep this hidden for now. Great thing for college coaches later
+                  <div class="d-block">
+                  <button type="button" class="btn btn-sm btn-outline-info text-nowrap mb-0">Follow</button>
+                </div>-->
+              </div>
+              <!--<div class="row mb-4">
+                <div class="col-auto">
+                  <span class="h6">323</span>
+                  <span>Posts</span>
+                </div>
+                <div class="col-auto">
+                  <span class="h6">3.5k</span>
+                  <span>Followers</span>
+                </div>
+                <div class="col-auto">
+                  <span class="h6">260</span>
+                  <span>Following</span>
+                </div>
+              </div>-->
+              <p class="text-lg mb-0" style="white-space: pre-line">
+                {{data.bio}}
+              </p>
+              <div class="row mb-4 py-3">
+                <div class="col-auto">
+                  <h5 class="mb-0">Social Media</h5>
+                </div>
+                <div class="col-auto">
+                  <ul class="list-inline">
+                    <li class="list-inline-item" *ngFor="let media of data.social_media"><a href="{{media.url}}" target="_blank"><i class="fab fa-{{media.type}} px-2"></i>{{media.acct_id}}</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- END Testimonials w/ user image & text & info -->
+  <!-- START Blogs w/ 4 cards w/ image & text & link -->
+  <section class="py-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-sm-10">
+          <div class="card card-plain card-blog">
+            <div class="card-title">
+              <h3>Academics</h3>
+            </div>
+            <div class="card-body px-0">
+              <dl class="row">
+                <dt class="col-4">GPA</dt><dd class="col-8">{{data.academics.gpa}}</dd>
+                <dt class="col-4">ClassRank</dt><dd class="col-8">{{data.academics.classRank}} of {{ data.academics.classSize}}</dd>
+                <ng-container *ngIf="data.academics.act">
+                  <dt class="col-4">ACT</dt><dd class="col-8">{{data.academics.act}}</dd>
+                </ng-container>
+                <ng-container *ngIf="data.academics.sat">
+                  <dt class="col-4">SAT</dt><dd class="col-8">{{data.academics.sat}}</dd>
+                </ng-container>
+                <ng-container *ngIf="data.academics.clubs && data.academics.clubs.length > 0">
+                  <dt class="col-4">Clubs</dt>
+                    <ng-container *ngFor="let club of data.academics.clubs">
+                      <dd class="col-8">
+                        {{club}}
+                      </dd>
+                      <dt class="col-4"></dt>
+                    </ng-container>
+                  <dd clas="col-8"></dd>
+                </ng-container>
+                <ng-container *ngIf="data.academics.awards && data.academics.awards.length > 0">
+                  <dt class="col-4">Awards</dt>
+                  <ng-container *ngFor="let award of data.academics.awards">
+                    <dd class="col-8">
+                      {{award}}
+                    </dd>
+                    <dt class="col-4"></dt>
+                  </ng-container>
+                  <dd class="col-8"></dd>
+                </ng-container>
+            </dl>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-10">
+          <div class="card card-plain card-blog">
+            <div class="card-title">
+              <h3>Athletics</h3>
+            </div>
+            <div class="card-body px-0">
+              <dl class="row">
+                <dt class="col-4">Positions</dt>
+                <dd class="col-8">
+                  <span *ngFor="let position of data.athletics.position; index as i">{{position}}<ng-container *ngIf="i< data.athletics.position.length -1"> / </ng-container></span>
+                </dd>
+                <dt class="col-4">Experience</dt><dd class="col-8">{{data.athletics.experience}}</dd>
+                <ng-container *ngIf="data.athletics.awards && data.athletics.awards.length > 0">
+                  <dt class="col-4">Awards</dt>
+                  <ng-container *ngFor="let award of data.athletics.awards">
+                    <dd class="col-8">
+                      {{award}}
+                    </dd>
+                    <dt class="col-4"></dt>
+                  </ng-container>
+                  <dd class="col-8"></dd>
+                </ng-container>
+                <ng-container *ngIf="data.athletics.teams && data.athletics.teams.length > 0">
+                  <dt class="col-4">Teams</dt>
+                  <ng-container *ngFor="let team of data.athletics.teams">
+                    <dd class="col-8">
+                      {{team.team_name}}
+                    </dd>
+                    <dt class="col-4"></dt>
+                    <dd class="col-8"><a href="mailto:{{team.coach_email}}"><i class="fa fa-envelope px-2"></i>{{team.coach}}</a></dd>
+                    <dt class="col-4"></dt>
+                  </ng-container>
+                </ng-container>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-10">
+          <div class="card card-plain card-blog">
+            <div class="card-title">
+              <h3>Media</h3>
+            </div>
+            <div class="card-body px-0">
+              <ul class="list-unstyled">
+                <li *ngFor="let link of data.highlights"><a href="{{link.url}}" target="_blank"><i class="fa fa-youtube px-2"></i>{{link.description}}</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- END Blogs w/ 4 cards w/ image & text & link -->
+</div>
