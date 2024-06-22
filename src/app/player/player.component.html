@@ -144,6 +144,19 @@
         </div>
       </div>
     </div>
+    <div class="container">
+      <div class="row py-5">
+        <div class="col-sm-6 col-lg-3">
+          <div class="card">
+            <div class="card-title">QR Code</div>
+            <p>Use this QR code to reference back to this profile</p>
+            <div class="card-body">
+              <qrcode [qrdata]="url" [width]="120" [errorCorrectionLevel]="'M'"></qrcode>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
   <!-- END Blogs w/ 4 cards w/ image & text & link -->
 </div>

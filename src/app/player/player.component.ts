@@ -3,7 +3,8 @@ import { Profile } from '../models/profile';
 import { SocialMedia } from '../models/social-media'
 import { Observable } from 'rxjs';
 import { AppService } from '../app.service';
-import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { ActivatedRoute, Router}from '@angular/router';
 
 @Component({
   selector: 'app-player',
@@ -13,13 +14,14 @@ import { ActivatedRoute } from '@angular/router';
 export class PlayerComponent implements OnInit{
 
 
-
+url: string;
 
 data: Observable<Profile> | undefined
 
 
 constructor(private service: AppService, private route: ActivatedRoute){
-  
+  this.url = window.location.href;
+  console.log(this.url);
 }
 
 ngOnInit(): void {

@@ -11,6 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeadersInterceptor } from './headers.interceptor';
 import { PlayerSearchComponent } from './player-search/player-search.component';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PlayerSearchComponent } from './player-search/player-search.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    QRCodeModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true}],
   bootstrap: [AppComponent]
