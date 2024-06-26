@@ -1,0 +1,198 @@
+<div *ngIf="data | async as data">
+    <section class="py-sm-2 py-1 ">
+        <div class="container">
+          <div class="row">
+            <h3>{{ data.firstName }} {{ data.lastName }}</h3>
+          </div>
+          <form class="g-3" [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+            <div class="row">
+              <div class="col-12"><h5>Personal & Contact Info</h5></div>
+              <div class="mb-3 form-floating">
+                <input formControlName="email" type="text" name="email" id="email" class="form-control"/>
+                <label for="email" class="form-label">Email</label>
+              </div>
+              <div class="mb-3 form-floating">
+                <input formControlName="phone" type="text" name="phone" id="phone" class="form-control"/>
+                <label for="phone" class="form-label">Phone</label>
+              </div>
+              <div class="mb-3 form-floating">
+                <textarea rows="60" formControlName="bio" type="text" name="bio" id="bio" class="form-control input-height-lg" style="min-height: 300px;"></textarea>
+                <label for="bio" class="form-label">Bio</label>
+              </div>
+              <div class="mb-3 form-floating">
+                <input formControlName="height" type="text" name="height" id="height" class="form-control"/>
+                <label for="height" class="form-label">Height</label>
+              </div>
+              <div class="mb-3 form-floating">
+                <input formControlName="weight" type="text" name="weight" id="weight" class="form-control"/>
+                <label for="weight" class="form-label">Weight</label>
+              </div>
+              <div class="mb-3 form-floating">
+                <input formControlName="picUrl" type="text" name="picUrl" id="picUrl" class="form-control"/>
+                <label for="picUrl" class="form-label">Picture URL</label>
+              </div>
+              <ng-container formArrayName="social_media">
+                <div *ngFor="let media of getSocialMedia(); index as i">
+                  <ng-container [formGroupName]="i">
+                    <div class="row">
+                      <div class="mb-3 form-floating col">
+                        <select class="form-select" formControlName="type" name="type" id="type" class="form-control">
+                          <option value="twitter"><i class="fab fa-twitter px-2">Twitter</i></option>
+                          <option value="instagram"><i class="fab fa-instagram px-2">Instagram</i></option>
+                        </select>
+                        <label for="type" class="form-label">Type</label>
+                      </div>
+                      <div class="mb-3 form-floating col">
+                        <input formControlName="acct_id" type="text" name="acct_id" id="acct_id" class="form-control"/>
+                        <label for="acct_id" class="form-label">ID</label>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+              </ng-container>
+              <div class="form-floating">
+                <button class="btn bg-gradient-primary mx-1" type="submit">Save Profile</button>
+                <button class="btn btn-outline-secondary" type="reset">Reset</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+      <!-- END Testimonials w/ user image & text & info -->
+      <!-- START Blogs w/ 4 cards w/ image & text & link -->
+      <section class="py-2">
+        <div class="container">
+          <form class="g-3" [formGroup]="academicsForm" (ngSubmit)="saveAcademics()">
+          <div class="row">
+            <div class="col-12"><h5>Academic Info</h5></div>
+            <div class="mb-3 form-floating">
+              <input formControlName="gpa" type="text" name="gpa" id="gpa" class="form-control"/>
+              <label for="gpa" class="form-label">GPA</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb-3 form-floating col">
+              <input formControlName="classRank" type="text" name="classRank" id="classRank" class="form-control"/>
+              <label for="classRank" class="form-label">Class Rank</label>
+            </div>
+            <div class="mb-3 form-floating col">
+              <input formControlName="classSize" type="text" name="classSize" id="classSize" class="form-control"/>
+              <label for="classSize" class="form-label">Class Size</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb-3 form-floating col">
+              <input formControlName="act" type="text" name="act" id="act" class="form-control"/>
+              <label for="act" class="form-label">ACT</label>
+            </div>
+            <div class="mb-3 form-floating col">
+              <input formControlName="sat" type="text" name="sat" id="sat" class="form-control"/>
+              <label for="sat" class="form-label">SAT</label>
+            </div>
+          </div>
+          <ng-container formArrayName="awards">
+            <div *ngFor="let award of getAcademicAwards(); index as i">
+                <div class="row">
+                  <div class="mb-3 form-floating col">
+                    <input [formControlName]="i" type="text" name="i" id="i" class="form-control"/>
+                    <label for="i" class="form-label">Award</label>
+                  </div>
+                </div>
+            </div>
+            <div class="col mb-3">
+              <button class="rounded-circle bg-gradient-info shadow text-center" (click)="addAcademicAward()">
+                <i class="fas fa-plus opacity-10"></i>
+              </button>
+            </div>
+          </ng-container>
+          <div class="row">
+            <div class="form-floating">
+              <button class="btn bg-gradient-primary mx-1" type="submit">Save Academics</button>
+              <button class="btn btn-outline-secondary" type="reset">Reset</button>
+          </div>
+          </div>
+          </form>
+        </div>
+      </section>
+      <section class="py-2">
+        <div class="container">
+          <form class="g-3" [formGroup]="athleticsForm" (ngSubmit)="saveAthletics()">
+            <div class="row">
+              <div class="col-12"><h5>Athletic Info</h5></div>
+              <div class="mb-3 form-floating">
+                <input formControlName="experience" type="text" name="experience" id="experience" class="form-control"/>
+                <label for="experience" class="form-label">Years Exp</label>
+              </div>
+              <div class="mb-3 form-floating">
+                <input formControlName="jersey" type="text" name="jersey" id="jersey" class="form-control"/>
+                <label for="jersey" class="form-label">Jersey #</label>
+              </div>
+              <div class="mb-3 form-floating">
+                <input formControlName="position" type="text" name="position" id="position" class="form-control"/>
+                <label for="position" class="form-label">Position</label>
+              </div>
+              <ng-container formArrayName="awards">
+                <div *ngFor="let award of getAthleticsAwards(); index as i">
+                    <div class="row">
+                      <div class="mb-3 form-floating col">
+                        <input [formControlName]="i" type="text" name="i" id="i" class="form-control"/>
+                        <label for="i" class="form-label">Award</label>
+                      </div>
+                    </div>
+                </div>
+                <div class="col mb-3">
+                  <button class="rounded-circle bg-gradient-info shadow text-center" (click)="addAthleticAward()">
+                    <i class="fas fa-plus opacity-10"></i>
+                  </button>
+                </div>
+              </ng-container>
+              <div class="form-floating">
+                <button class="btn bg-gradient-primary mx-1" type="submit">Save Atheltics</button>
+                <button class="btn btn-outline-secondary" type="reset">Reset</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+      <section class="py-2">
+        <div class="container">
+          <form class="g-3" [formGroup]="mediaForm" (ngSubmit)="saveMedia()">
+            <div class="row">
+              <div class="col-12"><h5>Highlights</h5></div>
+              <ng-container formArrayName="highlights">
+                <div *ngFor="let media of getHighlights(); index as i">
+                  <ng-container [formGroupName]="i">
+                    <div class="row">
+                      <div class="mb-3 form-floating col-3">
+                        <select class="form-select" formControlName="type" name="type" id="type" class="form-control">
+                          <option value="twitter"><i class="icon fab fa-youtube px-2">Youtube</i></option>
+                        </select>
+                        <label for="type" class="form-label">Type</label>
+                      </div>
+                      <div class="mb-3 form-floating col-lg-6 col-sm-9">
+                        <input formControlName="url" type="text" name="url" id="url" class="form-control"/>
+                        <label for="url" class="form-label">URL</label>
+                      </div>
+                      <div class="mb-3 form-floating col-sm-12 col-lg-9">
+                        <input formControlName="description" type="text" name="description" id="description" class="form-control"/>
+                        <label for="description" class="form-label">Title</label>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+                <div class="col mb-3">
+                  <button class="rounded-circle bg-gradient-info shadow text-center" (click)="addHighlight()">
+                    <i class="fas fa-plus opacity-10"></i>
+                  </button>
+                </div>
+              </ng-container>
+              <div class="form-floating">
+                <button class="btn bg-gradient-primary mx-1" type="submit">Save Highlights</button>
+                <button class="btn btn-outline-secondary" type="reset">Reset</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+      <!-- END Blogs w/ 4 cards w/ image & text & link -->
+    </div>

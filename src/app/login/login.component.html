@@ -1,0 +1,24 @@
+<div class="row-cols-sm-auto">
+    <div class="card card-plain align-items-center mat-elevation-z6">
+        <div class="card-header">
+            <h3 class="card-title">Login</h3>
+            <p>You must login to access administrative pages</p>
+        </div>
+        <div class="card-body">
+            <form class="g-3" [formGroup]="loginForm" (ngSubmit)="login()">
+                <div class="mb-3 form-floating">
+                    <input formControlName="email" type="email" name="email" id="email" class="form-control"/>
+                    <label for="email" class="form-label">Email</label>
+                </div>
+                <div class="mb-3 form-floating">
+                    <input formControlName="password" type="password" name="password" id="password" class="form-control"/>
+                    <label for="password" class="form-label">Password</label>
+                </div>
+                <div class="form-floating">
+                    <button class="btn bg-gradient-primary mx-1" type="submit">Login</button>
+                    <button class="btn btn-outline-secondary" type="reset">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -12,6 +12,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HeadersInterceptor } from './headers.interceptor';
 import { PlayerSearchComponent } from './player-search/player-search.component';
 import { QRCodeModule } from 'angularx-qrcode';
+import { AuthInterceptor } from './auth.interceptor';
+import { LoginComponent } from './login/login.component';
+import { CommonModule } from '@angular/common';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -20,16 +25,24 @@ import { QRCodeModule } from 'angularx-qrcode';
     PlayerComponent,
     LandingComponent,
     NavbarComponent,
-    PlayerSearchComponent
+    PlayerSearchComponent,
+    LoginComponent,
+    EditProfileComponent,
+    LogoutComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
     QRCodeModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true}],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true},{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

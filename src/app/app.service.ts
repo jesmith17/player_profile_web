@@ -22,5 +22,15 @@ export class AppService {
     return this.http.get<Profile[]>(`${this.apiUrl}/players/search`,{params: searchParams})
   }
 
+  public savePlayer(data:any, id: string) {
+    
+    let player = {player: data}
+    console.log(player);
+    console.log(id);
+    this.http.put<Profile>(`${this.apiUrl}/players/${id}`,{player: data}).subscribe(response => {
+      console.log(response);
+    })
+  }
+
 
 }
