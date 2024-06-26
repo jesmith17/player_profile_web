@@ -19,7 +19,7 @@ export class EditProfileComponent implements OnInit {
   athleticsForm: FormGroup;
   mediaForm: FormGroup;
 
-  constructor(private route: ActivatedRoute, private service: AppService, private fb: FormBuilder){
+  constructor(private route: ActivatedRoute, private service: AppService, private fb: FormBuilder, ){
 
     this.profileForm = this.fb.group({
       bio: ['', Validators.required],
@@ -70,6 +70,9 @@ export class EditProfileComponent implements OnInit {
         for (var award of data.academics.awards){
           this.addAcademicAward();
         }
+        for (var club of data.academics.clubs){
+          this.addAcademicClub();
+        }
         this.academicsForm.patchValue(data.academics);
         for (var award of data.athletics.awards){
           this.addAthleticAward();
@@ -88,6 +91,11 @@ export class EditProfileComponent implements OnInit {
   addAcademicAward() {
     const awards = this.academicsForm.controls["awards"] as FormArray;
     awards.push(new FormControl())
+  }
+
+  addAcademicClub() {
+    const club = this.academicsForm.controls["clubs"] as FormArray;
+    club.push(new FormControl())
   }
 
   addAthleticAward() {
@@ -122,6 +130,9 @@ export class EditProfileComponent implements OnInit {
     return (this.academicsForm.get('awards') as FormArray).controls;
   }
 
+  getAcademicClubs() {
+    return (this.academicsForm.get('clubs') as FormArray).controls;
+  }
 
   getAthleticsAwards() {
     return (this.athleticsForm.get('awards') as FormArray).controls;

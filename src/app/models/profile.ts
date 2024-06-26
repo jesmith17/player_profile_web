@@ -14,6 +14,7 @@ export interface Profile {
     athletics: Athletics;
     email: string;
     picUrl: string;
+    phone: string;
 
     jersey: number;
     position: string[];
