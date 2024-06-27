@@ -81,7 +81,7 @@ export class EditProfileComponent implements OnInit {
         for (var highlight of data.highlights){
           this.addHighlight();
         }
-        this.mediaForm.patchValue(data.highlights);
+        this.mediaForm.patchValue(data);
       })
   })
 
