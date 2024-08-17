@@ -17,6 +17,9 @@ import { LoginComponent } from './login/login.component';
 import { CommonModule } from '@angular/common';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { LogoutComponent } from './logout/logout.component';
+import { QrgeneratorComponent } from './qrgenerator/qrgenerator.component';
+import { TeamDetailComponent } from './team-detail/team-detail.component';
+import { TeamSearchComponent } from './team-search/team-search.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { LogoutComponent } from './logout/logout.component';
     PlayerSearchComponent,
     LoginComponent,
     EditProfileComponent,
-    LogoutComponent
+    LogoutComponent,
+    QrgeneratorComponent,
+    TeamDetailComponent,
+    TeamSearchComponent
   ],
   imports: [
     CommonModule,

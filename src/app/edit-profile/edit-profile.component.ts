@@ -22,6 +22,9 @@ export class EditProfileComponent implements OnInit {
   constructor(private route: ActivatedRoute, private service: AppService, private fb: FormBuilder, ){
 
     this.profileForm = this.fb.group({
+      _id: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
       bio: ['', Validators.required],
       email: ['',Validators.email],
       phone: ['', Validators.required],
@@ -45,10 +48,12 @@ export class EditProfileComponent implements OnInit {
 
     this.athleticsForm = this.fb.group({
       experience: [''],
-      position: [[]],
+      position: this.fb.array([]),
       jersey: [''],
-      awards: this.fb.array([])
+      awards: this.fb.array([]),
+      teams: this.fb.array([])
     });
+
     this.mediaForm = this.fb.group({
       highlights: this.fb.array([])
     });
@@ -61,28 +66,37 @@ export class EditProfileComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe( paramMap => {
       this.id = paramMap.get('id')!;
-      this.data = this.service.getProfile(this.id);
-      this.data.subscribe((data: Profile) => {
-        for (var media of data.social_media) {
-          this.addSocialMedia();
-        }
-        this.profileForm.patchValue(data);
-        for (var award of data.academics.awards){
-          this.addAcademicAward();
-        }
-        for (var club of data.academics.clubs){
-          this.addAcademicClub();
-        }
-        this.academicsForm.patchValue(data.academics);
-        for (var award of data.athletics.awards){
-          this.addAthleticAward();
-        }
-        this.athleticsForm.patchValue(data.athletics);
-        for (var highlight of data.highlights){
-          this.addHighlight();
-        }
-        this.mediaForm.patchValue(data);
-      })
+      if (this.id){  // Only patch the forms if it's an edit and not new
+        this.data = this.service.getProfile(this.id);
+        this.data.subscribe((data: Profile) => {
+          this.id = data.id;
+          for (var media of data.social_media) {
+            this.addSocialMedia();
+          }
+          this.profileForm.patchValue(data);
+          for (var award of data.academics.awards){
+            this.addAcademicAward();
+          }
+          for (var club of data.academics.clubs){
+            this.addAcademicClub();
+          }
+          this.academicsForm.patchValue(data.academics);
+          for (var award of data.athletics.awards){
+            this.addAthleticAward();
+          }
+          for (var team of data.athletics.teams){
+            this.addTeam();
+          }
+          for (var position of data.athletics.position){
+            this.addPosition();
+          }
+          this.athleticsForm.patchValue(data.athletics);
+          for (var highlight of data.highlights){
+            this.addHighlight();
+          }
+          this.mediaForm.patchValue(data);
+        })
+      }
   })
 
   }
@@ -91,6 +105,11 @@ export class EditProfileComponent implements OnInit {
   addAcademicAward() {
     const awards = this.academicsForm.controls["awards"] as FormArray;
     awards.push(new FormControl())
+  }
+
+  addPosition() {
+    const position = this.athleticsForm.controls["position"] as FormArray;
+    position.push(new FormControl())
   }
 
   addAcademicClub() {
@@ -109,6 +128,15 @@ export class EditProfileComponent implements OnInit {
       type:['', Validators.required],
       url: ['', Validators.required],
       description: ['', Validators.required]
+    }))
+  }
+
+  addTeam() {
+    const team = this.athleticsForm.controls["teams"] as FormArray;
+    team.push(this.fb.group({
+      team_name:['', Validators.required],
+      coach: ['', Validators.required],
+      coach_email: ['', Validators.required]
     }))
   }
 
@@ -142,19 +170,26 @@ export class EditProfileComponent implements OnInit {
     return (this.mediaForm.get('highlights') as FormArray).controls;
   }
 
+  getTeams() {
+    return (this.athleticsForm.get('teams') as FormArray).controls;
+  }
+
+  getPositions() {
+    return (this.athleticsForm.get('position') as FormArray).controls;
+  }
+
   saveProfile(): any {
-    if (this.id) {
-      this.service.savePlayer(this.profileForm.value, this.id)
-    } else  {
-      console.log('ID is null or undefined, so the save fails');
-    }
+    this.service.savePlayer(this.profileForm.value, this.id).subscribe((profile:Profile) => {
+      this.id = profile.id;
+      console.log(`ID has been set to a value of ${this.id}`);
+    })
+    
   }
 
   saveAcademics(): any {
     if (this.id) {
       let updates = {academic: this.academicsForm.value}
-      console.log(this.academicsForm.value)
-      this.service.savePlayer(updates, this.id)
+      this.data = this.service.savePlayer(updates, this.id)
     } else  {
       console.log('ID is null or undefined, so the save fails');
     }
@@ -163,7 +198,7 @@ export class EditProfileComponent implements OnInit {
   saveAthletics(): any {
     if (this.id) {
       let updates = {athletic: this.athleticsForm.value}
-      this.service.savePlayer(updates, this.id)
+      this.data = this.service.savePlayer(updates, this.id)
     } else  {
       console.log('ID is null or undefined, so the save fails');
     }
@@ -172,8 +207,7 @@ export class EditProfileComponent implements OnInit {
 
   saveMedia(): any {
     if (this.id) {
-      
-      this.service.savePlayer(this.mediaForm.value, this.id)
+      this.data = this.service.savePlayer(this.mediaForm.value, this.id)
     } else  {
       console.log('ID is null or undefined, so the save fails');
     }

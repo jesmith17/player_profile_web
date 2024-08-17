@@ -1,7 +1,7 @@
-<div *ngIf="data | async as data">
+<div>
     <section class="py-sm-2 py-1 ">
         <div class="container">
-          <div class="row">
+          <div class="row"  *ngIf="data | async as data">
             <div class="col">
               <h3>{{ data.firstName }} {{ data.lastName }}</h3>
             </div>
@@ -12,6 +12,20 @@
           <form class="g-3" [formGroup]="profileForm" (ngSubmit)="saveProfile()">
             <div class="row">
               <div class="col-12"><h5>Personal & Contact Info</h5></div>
+              <ng-container  *ngIf="!data">
+                <div class="mb-3 form-floating">
+                  <input formControlName="_id" type="text" name="_id" id="_id" class="form-control"/>
+                  <label for="_id" class="form-label">Profile ID</label>
+                </div>
+                <div class="mb-3 form-floating col-6">
+                  <input formControlName="firstName" type="text" name="firstName" id="firstName" class="form-control"/>
+                  <label for="firstName" class="form-label">First Name</label>
+                </div>
+                <div class="mb-3 form-floating col-6">
+                  <input formControlName="lastName" type="text" name="lastName" id="lastName" class="form-control"/>
+                  <label for="lastName" class="form-label">Last Name</label>
+                </div>
+              </ng-container>
               <div class="mb-3 form-floating">
                 <input formControlName="email" type="text" name="email" id="email" class="form-control"/>
                 <label for="email" class="form-label">Email</label>
@@ -149,10 +163,22 @@
                 <input formControlName="jersey" type="text" name="jersey" id="jersey" class="form-control"/>
                 <label for="jersey" class="form-label">Jersey #</label>
               </div>
-              <div class="mb-3 form-floating">
-                <input formControlName="position" type="text" name="position" id="position" class="form-control"/>
-                <label for="position" class="form-label">Position</label>
-              </div>
+              <ng-container formArrayName="position">
+                <h6>Positions</h6>
+                <div *ngFor="let award of getPositions(); index as i">
+                    <div class="row">
+                      <div class="mb-3 form-floating col-2">
+                        <input [formControlName]="i" type="text" name="i" id="i" class="form-control"/>
+                        <label for="i" class="form-label">Position</label>
+                      </div>
+                    </div>
+                </div>
+                <div class="col mb-3">
+                  <button class="rounded-circle bg-gradient-info shadow text-center" (click)="addPosition()">
+                    <i class="fas fa-plus opacity-10"></i>
+                  </button>
+                </div>
+              </ng-container>
               <ng-container formArrayName="awards">
                 <h6>Awards</h6>
                 <div *ngFor="let award of getAthleticsAwards(); index as i">
@@ -165,6 +191,32 @@
                 </div>
                 <div class="col mb-3">
                   <button class="rounded-circle bg-gradient-info shadow text-center" (click)="addAthleticAward()">
+                    <i class="fas fa-plus opacity-10"></i>
+                  </button>
+                </div>
+              </ng-container>
+              <div class="col-12"><h5>Teams</h5></div>
+              <ng-container formArrayName="teams">
+                <div *ngFor="let team of getTeams(); index as i">
+                  <ng-container [formGroupName]="i">
+                    <div class="row">
+                      <div class="mb-3 form-floating col-6">
+                        <input formControlName="team_name" name="team_name" id="tyteam_namepe" class="form-control"/>
+                        <label for="team_name" class="form-label">Team Name</label>
+                      </div>
+                      <div class="mb-3 form-floating col-6">
+                        <input formControlName="coach" type="text" name="coach" id="coach" class="form-control"/>
+                        <label for="coach" class="form-label">Coaches Name</label>
+                      </div>
+                      <div class="mb-3 form-floating col-sm-12">
+                        <input formControlName="coach_email" type="text" name="coach_email" id="coach_email" class="form-control"/>
+                        <label for="coach_email" class="form-label">Coach Email</label>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+                <div class="col mb-3">
+                  <button class="rounded-circle bg-gradient-info shadow text-center" (click)="addTeam()">
                     <i class="fas fa-plus opacity-10"></i>
                   </button>
                 </div>

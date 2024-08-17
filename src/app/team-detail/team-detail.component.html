@@ -1,0 +1,132 @@
+<section class="py-sm-2 py-1 " *ngIf="team | async as team">
+    <div class="container">
+        <div class="col-12 mx-auto">
+            <div class="row py-lg-5 py-3">
+                <div class="col-lg-3 my-auto">
+                    <img class="img border-radius-lg  z-index-2 img-fluid" src="{{team.team_logo}}" alt="Team Logo">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="mb-0 text-gradiant text-dark">{{team.team_name}}</h2>
+                </div>
+            </div>
+            <div class="row py-lg-5 py-3">
+                <dt class="col-2">Coach</dt><dd class="col-10">{{team.coach}}</dd>
+                <dt class="col-2">Email</dt><dd class="col-10"><a href="mailto:{{team.coach_email}}"><i class="ni ni-email-83 px-2"></i>{{team.coach_email}}</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-2"  *ngIf="team | async as team">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-sm-10" *ngIf="players | async as players">
+                <div class="card card-plain card-blog">
+                    <div class="card-title">
+                        <h3>Roster</h3>
+                    </div>
+                    <div class="card-body px-0">
+                        <div class="table-responsive">
+                        <table class="table align-items-center mb-0">
+                            <thead>
+                            <tr>
+                                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Player</th>
+                                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 ps-2">Grad Year</th>
+                                <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Positions</th>
+                                <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Jersey</th>
+                                <th class="text-secondary opacity-7"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let player of players" (click)="viewProfile(player.id)">
+                                    <td>
+                                    <div class="d-flex px-2 py-1">
+                                        <div>
+                                        <img src="{{player.picUrl}}" class="avatar avatar-xl me-3">
+                                        </div>
+                                        <div class="d-flex flex-column justify-content-center">
+                                        <h6 class="mb-0 text-md">{{player.firstName}} {{player.lastName}}</h6>
+                                        </div>
+                                    </div>
+                                    </td>
+                                    <td>
+                                        <p class="text-md font-weight-bold mb-0">{{player.academics.gradYear}}</p>
+                                    </td>
+                                    <td class="align-middle text-center text-sm">
+                                        <p class="text-md font-weight-bold mb-0">{{player.athletics.position}}</p>
+                                    </td>
+                                    <td class="align-middle text-center text-sm">
+                                        <p class="text-md font-weight-bold mb-0">{{player.athletics.jersey}}</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-10">
+                <div class="card card-plain card-blog">
+                    <div class="card-title">
+                        <h3>Schedule</h3>
+                    </div>
+                    <div class="card-body px-0">
+                        <div class="table-responsive-sm">
+                            <table class="table align-items-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 ps-2">Opp</th>
+                                        <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Location</th>
+                                        <th class="text-secondary opacity-7"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let game of team.games">
+                                        <td style="word-wrap: break-word">
+                                            <p class="text-md font-weight-bold mb-0">{{game.opponent}}</p>
+                                            <ng-container *ngIf="game.league == 'ECNL-RL' ">
+                                                <span class="badge bg-gradient-info">{{game.league}}</span>
+                                            </ng-container>
+                                            <ng-container *ngIf="game.league == 'Heartland' ">
+                                                <span class="badge bg-gradient-secondary">{{ game.league}}</span>
+                                            </ng-container>
+                                            <ng-container *ngIf="game.league == 'State Cup' ">
+                                                <span class="badge bg-gradient-primary">{{ game.league}}</span>
+                                            </ng-container>
+                                            
+    
+                                        </td>
+                                        <td style="word-wrap: break-word">
+                                            <p class="text-sm font-weight-bold mb-0">{{game.game_time | date:'short'}}</p>
+                                            <h6 class="mb-0 text-sm">{{game.location }}</h6>
+                                            <p class="text-xs text-secondary mb-0">Field #{{game.field}}</p>
+                                        </td>
+                                        <td>
+                                            
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>     
+</section> 
+<section>
+    <div class="container">
+        <div class="row py-5">
+          <div class="col-sm-6 col-lg-3">
+            <div class="card">
+              <div class="card-title">QR Code</div>
+              <p>Use this QR code to reference back to this team profile</p>
+              <div class="card-body">
+                <qrcode [qrdata]="url" [width]="120" [errorCorrectionLevel]="'M'"></qrcode>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+
+        

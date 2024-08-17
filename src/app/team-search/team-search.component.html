@@ -1,0 +1,50 @@
+<section class="py-sm-2 py-1 position-relative">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 mx-auto">
+            <div class="card card-plain">
+                <form [formGroup]="searchForm">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Team Name" aria-label="Team Name" aria-describedby="button-addon2" formControlName="name">
+                        <button class="btn bg-gradient-info mb-0" type="button" id="button-addon2" (click)="searchTeams(searchForm)" [disabled]="searchForm.invalid"><i class="fa fa-search px-2"></i>Search</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card" *ngIf="data | async as data">
+                <div class="table-responsive">
+                <table class="table align-items-center mb-0">
+                    <thead>
+                    <tr>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Team</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Coach</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Coach Email</th>
+                        <th class="text-secondary opacity-7"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let team of data" (click)="viewTeam(team.id)">
+                            <td>
+                            <div class="d-flex px-2 py-1">
+                                <div>
+                                <img src="{{team.team_logo}}" class="avatar avatar-xl me-3">
+                                </div>
+                                <div class="d-flex flex-column justify-content-center">
+                                <h6 class="mb-0 text-xs">{{team.team_name}}</h6>
+                                </div>
+                            </div>
+                            </td>
+                            <td>
+                                <p class="text-sm font-weight-bold mb-0">{{team.coach}}</p>
+                            </td>
+                            <td class="align-middle text-center text-sm">
+                                <p class="text-sm font-weight-bold mb-0">{{team.coach_email}}</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
