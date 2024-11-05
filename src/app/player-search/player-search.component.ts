@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./player-search.component.sass']
 })
 export class PlayerSearchComponent implements OnInit{
-  
+
   searchForm: FormGroup;
 
   data!: Observable<Profile[]>;
@@ -22,10 +22,10 @@ export class PlayerSearchComponent implements OnInit{
     });
   }
 
-  
+
 
   ngOnInit(): void {
-    
+    this.data = this.service.playerSearch('test');
   }
 
 

@@ -1,0 +1,88 @@
+{
+  "id": "LydiaKSmith",
+  "firstName": "Lydia",
+  "lastName": "Smith",
+  "weight": 130,
+  "height": 64,
+  "gpa": 4.45,
+  "bio": "I started playing soccer at the age of 7 and have loved the game ever since.\nAcademics are very important to me, so I am looking for a college environment where I can continue to grow as a student while also playing the sport I love. Im currently looking to pursue a degree in Sports Media/Communications and hope to work with a sports team after graduation. \nI play Forward for Olathe East HS and split time between Forward and outside defender for my club team, primarily on the left side. Over the last 2 years I have also taken on an increased role as a set piece specialist for both club and HS team.  In the offseason I have been focused on improving my attacking skills and my right foot shot. \nComing from a larger high school, I would prefer a medium to larger sized school with an active campus life and a variety of clubs and organizations to interact with. I'm open to all regions of the country and am willing to leave the midwest to pursue college. \n",
+  "social_media": [
+    {
+      "type": "twitter",
+      "acct_id": "lydia_k_smith",
+      "url": "https://x.com/lydia_k_smith"
+    },
+    {
+      "type": "instagram",
+      "acct_id": "lydia_k_smith07",
+      "url": "https://instagram.com/lydia_k_smith07"
+    }
+  ],
+  "academics": {
+    "gradYear": 2026,
+    "gpa": 4.5,
+    "classRank": 15,
+    "classSize": 532,
+    "awards": [
+      "Honor Roll",
+      "National Honor Society"
+    ],
+    "clubs": [
+      "Design Academy",
+      "3DE"
+    ]
+  },
+  "athletics": {
+    "experience": 9,
+    "jersey": 17,
+    "position": [
+      "FWD",
+      "DEF"
+    ],
+    "awards": [
+      "2yr Varsity Starter",
+      "2024 2nd Team All Sunflower League",
+      "2022-2023 KS State Cup Champion",
+      "2021-2022 KS State Cup Champion"
+    ],
+    "teams": [
+      {
+        "team_name": "Olathe East HS - Varsity",
+        "coach": "Keeley O'Grady",
+        "coach_email": "kogradyoe@olatheschools.org"
+      },
+      {
+        "id": "sbv0607",
+        "team_name": "Sporting Blue Valley 06/07 ECNl-RL ",
+        "coach": "Doug McLagan",
+        "coach_email": "dmclagan@ndsion.edu"
+      }
+    ]
+  },
+  "highlights": [
+    {
+      "type": "youtube",
+      "url": "https://youtu.be/RGBJG3qUYBQ?si=wIWdI0O1D8DjyIZE",
+      "description": "2024 HS Season Highlights - Olathe East Varsity"
+    },
+    {
+      "type": "youtube",
+      "url": "https://youtu.be/o7S4ganpotM?si=3xecbNToY2wLlrn-",
+      "description": "Fall 2023 Highlights - Sporting Blue Valley ECNl-RL 07"
+    },
+    {
+      "type": "youtube",
+      "url": "https://youtu.be/18w1ncPzC-Q?si=5PPhExtHqlROzUU2",
+      "description": "Spring 2023 Highlights - Olathe East HS Varsity"
+    },
+    {
+      "type": "youtube",
+      "url": "https://youtu.be/VWNE4eRk5Ck?si=0yXgg1WzPix-qXVQ",
+      "description": "2022 Season Highlights - Sporting Blue Valley ECNL-RL 07"
+    }
+  ],
+  "email": "lydiaks2007@gmail.com",
+  "picUrl": "./assets/img/lydia_profile.jpg",
+  "phone": "913-278-4925",
+  "ncaaId": "2306919425"
+}

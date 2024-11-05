@@ -136,10 +136,10 @@
                   <dt class="col-4">Teams</dt>
                   <ng-container *ngFor="let team of data.athletics.teams">
                     <dd class="col-8">
-                      <a [routerLink]="['/team', team.id]">{{team.team_name}}</a> 
+                      <a [routerLink]="['/team', team.id]">{{team.team_name}}</a>
                     </dd>
-                    <dt class="col-4"></dt>
-                    <dd class="col-8">
+                    <dt class="col-4" *ngIf="team.id != undefined"></dt>
+                    <dd class="col-8" *ngIf="team.id != undefined">
                         <a [routerLink]="['/team', team.id]" fragment="roster" class="px-2 text-gradiant text-sm"><i class="fa fa-users px-1"></i>Roster</a>
                         <a [routerLink]="['/team', team.id]" fragment="schedule" class="text-gradiant text-sm"><i class="fa fa-calendar px-1"></i>Schedule</a></dd>
                     <dt class="col-4"></dt>

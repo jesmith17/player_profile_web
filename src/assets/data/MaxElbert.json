@@ -1,0 +1,66 @@
+{
+  "id": "MaxElbert",
+  "firstName": "Maxine",
+  "lastName": "Elbert",
+  "weight": null,
+  "height": null,
+  "email": "elbertmaxine@gmail.com",
+  "phone": "913-701-0109",
+  "bio": "I started playing soccer in preschool the fun of playing with friends turned into the love of competition. High school lead me to try several sport teams at Olathe Northwest high school. I participated in basketball, soccer and last season ran track.  As well as playing club soccer on Sporting BV ECNL-RL 06/07. I have been working with Soccer trainers since 2020. These specialized training sessions strengthened my foot skills to be dominate with both feet equally, making it possible for me to play all forward positions.\n\nAcademically I am looking for program that deals with film studies. I am currently in the 21st Century E-communications program at Olathe Northwest high school. This program has fostered my interest in film studies. I have participated and created multiple short films.  I also am interested in exploring \nCareers in the marketing field .\nI am willing to look at out of state colleges along with in-state colleges. ",
+  "picUrl": "./assets/img/max_profile.png",
+  "academics": {
+    "_id": {
+      "$oid": "66ba1e38cd672e82cf8824a2"
+    },
+    "gpa": 3,
+    "gradYear": 2025,
+    "classRank": null,
+    "classSize": null,
+    "act": null,
+    "sat": null,
+    "awards": [],
+    "clubs": [
+      "e-Communications"
+    ]
+  },
+  "athletics": {
+    "_id": {
+      "$oid": "66ba1e5fcd672e82cf8824a3"
+    },
+    "experience": 9,
+    "jersey": 3,
+    "position": [
+      "FWD"
+    ],
+    "awards": [
+      "2022-2023 Kansas State Cup Champions",
+      "2021-2022 Kansas State Cup Champions"
+    ],
+    "team_ids": [
+      {
+        "$oid": "66ba0d8ebf33e5e23369694c"
+      }
+    ]
+  },
+  "highlights": [
+    {
+      "_id": {
+        "$oid": "66ba1ea3cd672e82cf8824a6"
+      },
+      "type": "youtube",
+      "url": "https://m.youtube.com/watch?v=NU3-pv_vxz8",
+      "description": "Maxine Elbert Highlights"
+    }
+  ],
+  "social_media": [
+    {
+      "acct_id": "fastmaxinekc",
+      "type": "twitter",
+      "url": "https://x.com/fastmaxinekc",
+      "_id": {
+        "$oid": "66ba23344b23cb0f1b84e8c8"
+      }
+    }
+  ],
+  "ncaaId": "2209675921"
+}
