@@ -1,0 +1,16 @@
+version: 1
+frontend:
+  phases:
+    build:
+      commands:
+        - npm install -g @angular/cli
+        - ng version
+        - ng build --configuration=production
+  artifacts:
+    baseDirectory: dist/player-profile
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - .npm/**/*
+      - node_modules/**/*
