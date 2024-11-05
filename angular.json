@@ -25,7 +25,6 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "sass",
-            "baseHref": "/player-profile-web/",
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -108,7 +107,11 @@
           }
         },
         "deploy": {
-          "builder": "angular-cli-ghpages:deploy"
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "https://jesmith17.github.io/player_profile_web/",
+            "dir": "dist/player-profile"
+          }
         }
       }
     }
