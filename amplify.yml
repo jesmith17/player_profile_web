@@ -5,6 +5,7 @@ frontend:
       commands:
         - npm install -g @angular/cli@18.2.11
         - ng version
+        - npm install
         - ng build --configuration=production
   artifacts:
     baseDirectory: dist/player-profile
