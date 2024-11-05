@@ -43,7 +43,8 @@ import { TeamSearchComponent } from './team-search/team-search.component';
     HttpClientModule,
     ReactiveFormsModule,
     QRCodeModule
-  ],
+    
+],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true},{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

@@ -2,10 +2,10 @@
     <div class="container">
         <div class="col-12 mx-auto">
             <div class="row py-lg-5 py-3">
-                <div class="col-lg-3 my-auto">
-                    <img class="img border-radius-lg  z-index-2 img-fluid" src="{{team.team_logo}}" alt="Team Logo">
+                <div class="col-lg-2 col-3">
+                    <img class="img border-radius-sm img-fluid" src="{{team.team_logo}}" alt="Team Logo">
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-8 col-sm-9">
                     <h2 class="mb-0 text-gradiant text-dark">{{team.team_name}}</h2>
                 </div>
             </div>
@@ -20,7 +20,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-sm-10" *ngIf="players | async as players">
-                <div class="card card-plain card-blog">
+                <div class="card card-plain card-blog" id="roster">
                     <div class="card-title">
                         <h3>Roster</h3>
                     </div>
@@ -65,18 +65,17 @@
                 </div>
             </div>
             <div class="col-lg-6 col-sm-10">
-                <div class="card card-plain card-blog">
+                <div class="card card-plain card-blog"  id="schedule">
                     <div class="card-title">
                         <h3>Schedule</h3>
                     </div>
                     <div class="card-body px-0">
-                        <div class="table-responsive-sm">
+                        <div class="table-responsive">
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 ps-2">Opp</th>
-                                        <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Location</th>
-                                        <th class="text-secondary opacity-7"></th>
+                                        <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 d-none d-md-block">Location</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -92,16 +91,19 @@
                                             <ng-container *ngIf="game.league == 'State Cup' ">
                                                 <span class="badge bg-gradient-primary">{{ game.league}}</span>
                                             </ng-container>
-                                            
-    
+                                            <ng-container *ngIf="game.league == 'ECNL-RL Showcase' ">
+                                              <span class="badge bg-gradient-success">{{ game.league}}</span>
+                                            </ng-container>
+                                            <div class="d-block d-sm-none">
+                                                <p class="text-sm font-weight-bold mb-0">{{game.game_time | date:'short'}}</p>
+                                                <h6 class="mb-0 text-sm">{{game.location }}</h6>
+                                                <p class="text-xs text-secondary mb-0">Field #{{game.field}}</p>
+                                            </div>
                                         </td>
-                                        <td style="word-wrap: break-word">
+                                        <td class="d-none d-md-block">
                                             <p class="text-sm font-weight-bold mb-0">{{game.game_time | date:'short'}}</p>
                                             <h6 class="mb-0 text-sm">{{game.location }}</h6>
                                             <p class="text-xs text-secondary mb-0">Field #{{game.field}}</p>
-                                        </td>
-                                        <td>
-                                            
                                         </td>
                                     </tr>
                                 </tbody>
@@ -110,6 +112,8 @@
                     </div>
                 </div>
             </div>
+
+
         </div>
     </div>     
 </section> 

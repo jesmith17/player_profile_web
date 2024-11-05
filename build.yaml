@@ -1,0 +1,3 @@
+steps:
+- name: 'build angular'
+  args: ['ng', 'build', '-c', 'production']

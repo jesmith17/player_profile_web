@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
 import { PlayerComponent } from './player/player.component';
 import { LandingComponent } from './landing/landing.component';
@@ -34,13 +34,18 @@ const routes: Routes = [
   ]},
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
-  {path: 'home', component: PlayerSearchComponent},
-  {path: '**', component: PlayerSearchComponent, pathMatch: 'full'}
+  {path: 'home', component: LandingComponent},
+  {path: '**', redirectTo: 'home', pathMatch: 'full'}
 
 ];
 
+const routerOptions: ExtraOptions = {
+  useHash: false,
+  anchorScrolling: 'enabled',
+};
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, routerOptions)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
