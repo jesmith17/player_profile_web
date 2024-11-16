@@ -1,5 +1,6 @@
 [{
   "id": "LydiaKSmith",
+  "showProfile": true,
   "firstName": "Lydia",
   "lastName": "Smith",
   "weight": 130,
@@ -88,6 +89,7 @@
 },
 {
   "id": "MaxElbert",
+  "showProfile": true,
   "firstName": "Maxine",
   "lastName": "Elbert",
   "weight": null,
@@ -145,4 +147,133 @@
     }
   ],
   "ncaaId": "2209675921"
-}]
+},
+{
+  "id": "CeceliaOxenford",
+  "showProfile": false,
+  "firstName": "Cecelia",
+  "lastName": "Oxenford",
+  "academics": { "gradYear": 2025},
+  "athletics": { "jersey": 2,"team_ids": [{"$oid": "66ba0d8ebf33e5e23369694c"}]}
+},
+{
+  "id": "KathrynePronske",
+  "showProfile": false,
+  "firstName": "Kathryne",
+  "lastName": "Pronske",
+  "academics": { "gradYear": 2025},
+  "athletics": { "jersey": 4,"team_ids": [{"$oid": "66ba0d8ebf33e5e23369694c"}]}
+},
+{
+  "id": "MiaLabounty",
+  "showProfile": false,
+  "firstName": "Mia",
+  "lastName": "LaBounty",
+  "academics": { "gradYear": 2025},
+  "athletics": { "jersey": 6,"team_ids": [{"$oid": "66ba0d8ebf33e5e23369694c"}]}
+},
+{
+  "id": "KateDouglas",
+  "showProfile": false,
+  "firstName": "Kate",
+  "lastName": "Douglas",
+  "academics": { "gradYear": 2025},
+  "athletics": { "jersey": 7,"team_ids": [{"$oid": "66ba0d8ebf33e5e23369694c"}]}
+},
+{
+  "id": "MaddieShoup",
+  "showProfile": false,
+  "firstName": "Maddie",
+  "lastName": "Shoup",
+  "academics": { "gradYear": 2025},
+  "athletics": { "jersey": 8,"team_ids": [{"$oid": "66ba0d8ebf33e5e23369694c"}]}
+},
+{
+  "id": "AddieBrown",
+  "showProfile": false,
+  "firstName": "Addie",
+  "lastName": "Brown",
+  "academics": { "gradYear": 2025},
+  "athletics": { "jersey": 9,"team_ids": [{"$oid": "66ba0d8ebf33e5e23369694c"}]}
+},
+{
+  "id": "RikkiAnneMcLeod",
+  "showProfile": false,
+  "firstName": "Rikki-Anne",
+  "lastName": "McLeod",
+  "academics": { "gradYear": 2025},
+  "athletics": { "jersey": 10,"team_ids": [{"$oid": "66ba0d8ebf33e5e23369694c"}]}
+},
+{
+  "id": "CalleSartino",
+  "showProfile": false,
+  "firstName": "Calle",
+  "lastName": "Sartino",
+  "academics": { "gradYear": 2025},
+  "athletics": { "jersey":11,"team_ids": [{"$oid": "66ba0d8ebf33e5e23369694c"}]}
+},
+{
+  "id": "HannahLavender",
+  "showProfile": false,
+  "firstName": "Hannah",
+  "lastName": "Lavender",
+  "academics": { "gradYear": 2025},
+  "athletics": { "jersey": 12,"team_ids": [{"$oid": "66ba0d8ebf33e5e23369694c"}]}
+},
+{
+  "id": "JordanSight",
+  "showProfile": false,
+  "firstName": "Jordan",
+  "lastName": "Sight",
+  "academics": { "gradYear": 2025},
+  "athletics": { "jersey": 13,"team_ids": [{"$oid": "66ba0d8ebf33e5e23369694c"}]}
+},
+{
+  "id": "MaryKateWeinrich",
+  "showProfile": false,
+  "firstName": "Mary Kate",
+  "lastName": "Weinrich",
+  "academics": { "gradYear": 2025},
+  "athletics": { "jersey": 14,"team_ids": [{"$oid": "66ba0d8ebf33e5e23369694c"}]}
+},
+{
+  "id": "GabriellaArmenta",
+  "showProfile": false,
+  "firstName": "Gabriella",
+  "lastName": "Armenta",
+  "academics": { "gradYear": 2025},
+  "athletics": { "jersey": 21,"team_ids": [{"$oid": "66ba0d8ebf33e5e23369694c"}]}
+},
+{
+  "id": "PaigePikus",
+  "showProfile": false,
+  "firstName": "Paige",
+  "lastName": "Pikus",
+  "academics": { "gradYear": 2026},
+  "athletics": { "jersey": 22,"team_ids": [{"$oid": "66ba0d8ebf33e5e23369694c"}]}
+},
+{
+  "id": "EllaPrybylski",
+  "showProfile": false,
+  "firstName": "Ella",
+  "lastName": "Przybylski",
+  "academics": { "gradYear": 2025},
+  "athletics": { "jersey": 24,"team_ids": [{"$oid": "66ba0d8ebf33e5e23369694c"}]}
+},
+{
+  "id": "JackieSmith",
+  "showProfile": false,
+  "firstName": "Jackie",
+  "lastName": "Smith",
+  "academics": { "gradYear": 2026},
+  "athletics": { "jersey": 29,"team_ids": [{"$oid": "66ba0d8ebf33e5e23369694c"}]}
+},
+{
+  "id": "AnnieWilken",
+  "showProfile": false,
+  "firstName": "Annie",
+  "lastName": "Wilken",
+  "academics": { "gradYear": 2025},
+  "athletics": { "jersey": 30,"team_ids": [{"$oid": "66ba0d8ebf33e5e23369694c"}]}
+}
+]

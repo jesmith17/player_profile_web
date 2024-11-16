@@ -22,6 +22,7 @@ export interface Profile {
     links: string[];
     social_media: SocialMedia[];
     highlights: Highlight[];
+    showProfile:boolean;
     
     
 }
