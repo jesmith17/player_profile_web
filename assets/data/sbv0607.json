@@ -171,6 +171,13 @@
       "league": "ECNL-RL"
     },
     {
+      "opponent": "Sporting Iowa",
+      "game_time":  "2024-11-03T19:00:00.000Z",
+      "location": "Grimes Park",
+      "field": 2,
+      "league": "ECNL-RL"
+    },
+    {
       "opponent": "South Shore Select ECNL RL 06/07G",
       "game_time":  "2024-12-06T22:00:00.000Z",
       "location": "Central Bank Sporting Complex",
@@ -207,38 +214,20 @@
     },
     {
       "opponent": "ECNL-RL Showcase",
-      "game_time":  "2025-02-14T06:00:00.000Z",
+      "game_time":  "2025-02-14T00:00:00.000Z",
       "location": "TBD",
       "league": "ECNL-RL Showcase"
     },
     {
       "opponent": "ECNL-RL Showcase",
-      "game_time":  "2025-02-15T06:00:00.000Z",
+      "game_time":  "2025-02-15T00:00:00.000Z",
       "location": "TBD",
       "league": "ECNL-RL Showcase"
     },
     {
       "opponent": "ECNL-RL Showcase",
-      "game_time": "2025-02-16T06:00:00.000Z",
+      "game_time": "2025-02-16T00:00:00.000Z",
       "location": "TBD",
-      "league": "ECNL-RL Showcase"
-    },
-    {
-      "opponent": "Elite 120 Showcase",
-      "game_time":  "2025-02-21T06:00:00.000Z",
-      "location": "Scheels Overland Park Soccer Complex",
-      "league": "ECNL-RL Showcase"
-    },
-    {
-      "opponent": "Elite 120 Showcase",
-      "game_time":  "2025-02-22T06:00:00.000Z",
-      "location": "Scheels Overland Park Soccer Complex",
-      "league": "ECNL-RL Showcase"
-    },
-    {
-      "opponent": "Elite 120 Showcase",
-      "game_time": "2025-02-23T06:00:00.000Z",
-      "location": "Scheels Overland Park Soccer Complex",
       "league": "ECNL-RL Showcase"
     }
   ]

@@ -3,5 +3,315 @@
   "team_name": "Sporting Blue Valley 06/07 ECNL-RL Girls",
   "coach": "Doug McLagan",
   "coach_email": "dmclagan@ndsion.edu",
-  "team_logo": "./assets/img/SBV_Sports_Engine.png"
+  "team_logo": "./assets/img/SBV_Sports_Engine.png",
+  "games": [
+    {
+      "_id": {
+        "$oid": "66ba0e13bf33e5e23369694d"
+      },
+      "opponent": "Sting Nebraska",
+      "field": "10",
+      "location": "Paragon Star Sports Complex",
+      "game_time": {
+        "$date": "2024-08-17T09:00:00.000Z"
+      },
+      "updated_at": {
+        "$date": "2024-08-12T13:32:20.146Z"
+      },
+      "created_at": {
+        "$date": "2024-08-12T13:31:41.518Z"
+      },
+      "league": "ECNL-RL"
+    },
+    {
+      "_id": {
+        "$oid": "66ba0f60bf33e5e23369694e"
+      },
+      "opponent": "KC Fusion",
+      "location": "Paragon Star Sports Complex",
+      "field": "8",
+      "game_time": {
+        "$date": "2024-08-18T17:00:00.000Z"
+      },
+      "league": "ECNL-RL",
+      "updated_at": {
+        "$date": "2024-08-12T13:34:24.774Z"
+      },
+      "created_at": {
+        "$date": "2024-08-12T13:34:24.774Z"
+      }
+    },
+    {
+      "opponent": "Sporting Iowa",
+      "game_time": {
+        "$date": "2024-08-31T22:00:00.000Z"
+      },
+      "location": "Paragon Star Sports Complex",
+      "field": 5,
+      "league": "ECNL-RL"
+    },
+    {
+      "opponent": "FC United Iowa",
+      "game_time": {
+        "$date": "2024-09-01T19:00:00.000Z"
+      },
+      "location": "Paragon Star Sports Complex",
+      "field": 7,
+      "league": "ECNL-RL"
+    },
+    {
+      "opponent": "KC Fire FC 07G Cyclones",
+      "game_time": {
+        "$date": "2024-09-07T00:30:00.000Z"
+      },
+      "location": "Garmin Olathe Soccer Complex",
+      "field": 1,
+      "league": "Heartland"
+    },
+    {
+      "opponent": "KC Athletics Academy Select 07G MADL",
+      "game_time": {
+        "$date": "2024-09-07T22:00:00.000Z"
+      },
+      "location": "Scheels Overland Park Soccer Complex",
+      "field": 4,
+      "league": "Heartland"
+    },
+    {
+      "opponent": "KC Athletics",
+      "game_time": {
+        "$date": "2024-09-08T17:00:00.000Z"
+      },
+      "location": "Scheels Overland Park Soccer Complex",
+      "field": 4,
+      "league": "ECNL-RL"
+    },
+    {
+      "opponent": "KC Fusion",
+      "game_time": {
+        "$date": "2024-09-14T18:00:00.000Z"
+      },
+      "location": "Compass Minerals Sporting Fields",
+      "field": 3,
+      "league": "ECNL-RL"
+    },
+    {
+      "opponent": "KC Fusion 06/07 Gold",
+      "game_time": {
+        "$date": "2024-09-15T21:30:00.000Z"
+      },
+      "location": "Garmin Olathe Soccer Complex",
+      "field": 7,
+      "league": "Heartland"
+    },
+    {
+      "opponent": "Shattuck-St. Mary's 2006",
+      "game_time": {
+        "$date": "2024-09-21T22:00:00.000Z"
+      },
+      "location": "Scheels Overland Park Soccer Complex",
+      "field": 2,
+      "league": "Heartland"
+    },
+    {
+      "opponent": "Missouri Rush",
+      "game_time": {
+        "$date": "2024-09-22T21:00:00.000Z"
+      },
+      "location": "Scheels Overland Park Soccer Complex",
+      "field": 4,
+      "league": "ECNL-RL"
+    },
+    {
+      "opponent": "Sting Nebraska",
+      "game_time": {
+        "$date": "2024-09-28T15:00:00.000Z"
+      },
+      "location": "Lincoln Sports Foundation",
+      "league": "ECNL-RL"
+    },
+    {
+      "opponent": "AFA Fillies",
+      "game_time": {
+        "$date": "2024-09-29T19:00:00.000Z"
+      },
+      "location": "Scheels Overland Park Soccer Complex",
+      "field": 11,
+      "league": "ECNL-RL"
+    },
+    {
+      "opponent": "KCL Academy Reign",
+      "game_time": {
+        "$date": "2024-10-05T20:00:00.000Z"
+      },
+      "location": "Compass Minerals Sporting Fields",
+      "field": 5,
+      "league": "Heartland"
+    },
+    {
+      "opponent": "OP Academy 2006G",
+      "game_time": {
+        "$date": "2024-10-11T23:00:00.000Z"
+      },
+      "location": "Scheels Overland Park Soccer Complex",
+      "field": 1,
+      "league": "Heartland"
+    },
+    {
+      "opponent": "KC Surf Elite 64 06/07",
+      "game_time": {
+        "$date": "2024-10-13T20:00:00.000Z"
+      },
+      "location": "Garmin Olathe Soccer Complex",
+      "field": 5,
+      "league": "Heartland"
+    },
+    {
+      "opponent": "HAFC Elite HSG",
+      "game_time": {
+        "$date": "2024-10-20T18:30:00.000Z"
+      },
+      "location": "Scheels Overland Park Soccer Complex",
+      "field": 11,
+      "league": "Heartland"
+    },
+    {
+      "opponent": "Sporting Iowa",
+      "game_time": {
+        "$date": "2024-11-03T19:00:00.000Z"
+      },
+      "location": "Grimes Park",
+      "field": 2,
+      "league": "ECNL-RL"
+    },
+    {
+      "opponent": "Kansas Rush Wichita Academy 07",
+      "game_time": {
+        "$date": "2024-11-09T02:30:00.000Z"
+      },
+      "location": "Compass Minerals Sporting Fields",
+      "league": "State Cup",
+      "field": 7
+    },
+    {
+      "opponent": "TOCA FC G2006/2007 - Elite",
+      "game_time": {
+        "$date": "2024-11-09T19:30:00.000Z"
+      },
+      "location": "Compass Minerals Sporting Fields",
+      "league": "State Cup",
+      "field": 6
+    },
+    {
+      "opponent": "Surf Elite 64 06/07G",
+      "game_time": {
+        "$date": "2024-11-10T19:30:00.000Z"
+      },
+      "location": "Compass Minerals Sporting Facility",
+      "field": 6,
+      "league": "State Cup"
+    },
+    {
+      "opponent": "TBD - State Cup Semi-Finals",
+      "game_time": {
+        "$date": "2024-11-16T00:00:00.000Z"
+      },
+      "location": "Compass Minerals Sporting Fields",
+      "league": "State Cup"
+    },
+    {
+      "opponent": "TBD - State Cup Finals",
+      "game_time": {
+        "$date": "2024-11-17T00:00:00.000Z"
+      },
+      "location": "Compass Minerals Sporting Fields",
+      "league": "State Cup"
+    },
+    {
+      "opponent": "KC Athletics",
+      "game_time": {
+        "$date": "2024-11-23T00:00:00.000Z"
+      },
+      "location": "Compass Minerals Sporting Fields",
+      "league": "ECNL-RL"
+    },
+    {
+      "opponent": "Sporting Iowa",
+      "game_time": {
+        "$date": "2024-11-03T19:00:00.000Z"
+      },
+      "location": "Grimes Park",
+      "field": 2,
+      "league": "ECNL-RL"
+    },
+    {
+      "opponent": "South Shore Select ECNL RL 06/07G",
+      "game_time": {
+        "$date": "2024-12-06T22:00:00.000Z"
+      },
+      "location": "Central Bank Sporting Complex",
+      "league": "ECNL-RL Showcase",
+      "field": 10
+    },
+    {
+      "opponent": "Scorpions SC ECNL RL G07/06",
+      "game_time": {
+        "$date": "2024-12-07T18:00:00.000Z"
+      },
+      "location": "Central Bank Sporting Complex",
+      "league": "ECNL-RL Showcase",
+      "field": 8
+    },
+    {
+      "opponent": "Indiana Elite FC RL G06/07",
+      "game_time": {
+        "$date": "2024-12-08T19:30:00.000Z"
+      },
+      "location": "Central Bank Sporting Complex",
+      "league": "ECNL-RL Showcase",
+      "field": 9
+    },
+    {
+      "opponent": "SLSG - IL ECNL-RL",
+      "game_time": {
+        "$date": "2024-12-13T18:00:00.000Z"
+      },
+      "location": "O'Fallon Family Sports Park",
+      "field": 5,
+      "league": "ECNL-RL"
+    },
+    {
+      "opponent": "SLSG - MO ECNL-RL",
+      "game_time": {
+        "$date": "2024-12-15T16:00:00.000Z"
+      },
+      "location": "Cottleville City Fields",
+      "field": 2,
+      "league": "ECNL-RL"
+    },
+    {
+      "opponent": "ECNL-RL Showcase",
+      "game_time": {
+        "$date": "2025-02-14T00:00:00.000Z"
+      },
+      "location": "TBD",
+      "league": "ECNL-RL Showcase"
+    },
+    {
+      "opponent": "ECNL-RL Showcase",
+      "game_time": {
+        "$date": "2025-02-15T00:00:00.000Z"
+      },
+      "location": "TBD",
+      "league": "ECNL-RL Showcase"
+    },
+    {
+      "opponent": "ECNL-RL Showcase",
+      "game_time": {
+        "$date": "2025-02-16T00:00:00.000Z"
+      },
+      "location": "TBD",
+      "league": "ECNL-RL Showcase"
+    }
+  ]
 }]
