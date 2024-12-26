@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: "https://pvzcfuquuk.execute-api.us-west-2.amazonaws.com/production/"
+    apiUrl: "http://localhost:8080/api"
   };
