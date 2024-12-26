@@ -25,7 +25,7 @@ export class PlayerSearchComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.data = this.service.playerSearch('test');
+    //this.data = this.service.playerSearch('test');
   }
 
 
