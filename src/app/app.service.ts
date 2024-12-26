@@ -15,17 +15,17 @@ export class AppService {
   constructor(private http: HttpClient) { }
 
   public getProfile(id: string): Observable<Profile>{
-    return this.http.get<Profile>(`./assets/data/${id}.json`)
+    return this.http.get<Profile>(`${this.apiUrl}/players/${id}`)
   }
 
   public getPlayers(team_id: string): Observable<Profile[]> {
     let teamFilter = new HttpParams().set('team', team_id);
-    return this.http.get<Profile[]>('./assets/data/player_profile.players.json')
+    return this.http.get<Profile[]>(`${this.apiUrl}/players`)
   }
 
   public playerSearch(criteria: string): Observable<Profile[]>{
     let searchParams = new HttpParams().set('criteria', criteria);
-    return this.http.get<Profile[]>('./assets/data/player_profile.players.json')
+    return this.http.get<Profile[]>(`${this.apiUrl}/players/search`, {params: searchParams})
   }
 
   public teamSearch(criteria: string): Observable<Team[]>{
@@ -34,11 +34,11 @@ export class AppService {
   }
 
   public allTeams(): Observable<Team[]>{
-    return this.http.get<Team[]>(`./assets/data/player_profile.teams.json`)
+    return this.http.get<Team[]>(`${this.apiUrl}/teams`)
   }
 
   public getTeam(id: string): Observable<Team>{
-    return this.http.get<Team>(`./assets/data/${id}.json`)
+    return this.http.get<Team>(`${this.apiUrl}/teams/${id}`)
   }
 
   public savePlayer(data:any, id?: string): Observable<Profile> {
