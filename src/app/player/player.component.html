@@ -12,9 +12,9 @@
                 <h2 class="mb-0 text-gradiant text-dark">{{data.firstName}} {{data.lastName}}</h2>
                 <span class="text-md text-secondary text-starts" *ngIf="data.ncaaId">NCAA Elig ID: {{ data.ncaaId }}</span>
                 <ng-container *ngIf="user | async">
-                  <a [routerLink]="['/profile', data.id,'edit']" class="btn btn-sm bg-gradient-info btn-round mb-0 me-1 mt-2 mt-md-0"><i class="fa fa-regular fa-pen-to-square mx-1"></i>Edit</a>
+                  <a [routerLink]="['/profile', data._id,'edit']" class="btn btn-sm bg-gradient-info btn-round mb-0 me-1 mt-2 mt-md-0"><i class="fa fa-regular fa-pen-to-square mx-1"></i>Edit</a>
                 </ng-container>
-                <h2 class="mb-0 text-end text-gradiant text-dark">Class Of {{data.academics.gradYear}}</h2>
+                <h2 class="mb-0 text-end text-gradiant text-dark">Class Of {{data.academic.gradYear}}</h2>
                 <!-- Lets keep this hidden for now. Great thing for college coaches later
                   <div class="d-block">
                   <button type="button" class="btn btn-sm btn-outline-info text-nowrap mb-0">Follow</button>
@@ -76,19 +76,19 @@
             </div>
             <div class="card-body px-0">
               <dl class="row">
-                <dt class="col-4">GPA</dt><dd class="col-8">{{data.academics.gpa}}</dd>
-                <ng-container *ngIf="data.academics.classRank">
-                  <dt class="col-4">ClassRank</dt><dd class="col-8">{{data.academics.classRank}} of {{ data.academics.classSize}}</dd>
+                <dt class="col-4">GPA</dt><dd class="col-8">{{data.academic.gpa}}</dd>
+                <ng-container *ngIf="data.academic.classRank">
+                  <dt class="col-4">ClassRank</dt><dd class="col-8">{{data.academic.classRank}} of {{ data.academic.classSize}}</dd>
                 </ng-container>
-                <ng-container *ngIf="data.academics.act">
-                  <dt class="col-4">ACT</dt><dd class="col-8">{{data.academics.act}}</dd>
+                <ng-container *ngIf="data.academic.act">
+                  <dt class="col-4">ACT</dt><dd class="col-8">{{data.academic.act}}</dd>
                 </ng-container>
-                <ng-container *ngIf="data.academics.sat">
-                  <dt class="col-4">SAT</dt><dd class="col-8">{{data.academics.sat}}</dd>
+                <ng-container *ngIf="data.academic.sat">
+                  <dt class="col-4">SAT</dt><dd class="col-8">{{data.academic.sat}}</dd>
                 </ng-container>
-                <ng-container *ngIf="data.academics.clubs && data.academics.clubs.length > 0">
+                <ng-container *ngIf="data.academic.clubs && data.academic.clubs.length > 0">
                   <dt class="col-4">Clubs</dt>
-                    <ng-container *ngFor="let club of data.academics.clubs">
+                    <ng-container *ngFor="let club of data.academic.clubs">
                       <dd class="col-8">
                         {{club}}
                       </dd>
@@ -96,9 +96,9 @@
                     </ng-container>
                   <dd clas="col-8"></dd>
                 </ng-container>
-                <ng-container *ngIf="data.academics.awards && data.academics.awards.length > 0">
+                <ng-container *ngIf="data.academic.awards && data.academic.awards.length > 0">
                   <dt class="col-4">Awards</dt>
-                  <ng-container *ngFor="let award of data.academics.awards">
+                  <ng-container *ngFor="let award of data.academic.awards">
                     <dd class="col-8">
                       {{award}}
                     </dd>
@@ -119,12 +119,12 @@
               <dl class="row">
                 <dt class="col-4">Positions</dt>
                 <dd class="col-8">
-                  <span *ngFor="let position of data.athletics.position; index as i">{{position}}<ng-container *ngIf="i< data.athletics.position.length -1"> / </ng-container></span>
+                  <span *ngFor="let position of data.athletic.position; index as i">{{position}}<ng-container *ngIf="i< data.athletic.position.length -1"> / </ng-container></span>
                 </dd>
-                <dt class="col-4">Experience</dt><dd class="col-8">{{data.athletics.experience}}</dd>
-                <ng-container *ngIf="data.athletics.awards && data.athletics.awards.length > 0">
+                <dt class="col-4">Experience</dt><dd class="col-8">{{data.athletic.experience}}</dd>
+                <ng-container *ngIf="data.athletic.awards && data.athletic.awards.length > 0">
                   <dt class="col-4">Awards</dt>
-                  <ng-container *ngFor="let award of data.athletics.awards">
+                  <ng-container *ngFor="let award of data.athletic.awards">
                     <dd class="col-8">
                       {{award}}
                     </dd>
@@ -132,16 +132,16 @@
                   </ng-container>
                   <dd class="col-8"></dd>
                 </ng-container>
-                <ng-container *ngIf="data.athletics.teams && data.athletics.teams.length > 0">
+                <ng-container *ngIf="data.athletic.teams && data.athletic.teams.length > 0">
                   <dt class="col-4">Teams</dt>
-                  <ng-container *ngFor="let team of data.athletics.teams">
+                  <ng-container *ngFor="let team of data.athletic.teams">
                     <dd class="col-8">
-                      <a [routerLink]="['/team', team.id]">{{team.team_name}}</a>
+                      <a [routerLink]="['/team', team._id]">{{team.team_name}}</a>
                     </dd>
-                    <dt class="col-4" *ngIf="team.id != undefined"></dt>
-                    <dd class="col-8" *ngIf="team.id != undefined">
-                        <a [routerLink]="['/team', team.id]" fragment="roster" class="px-2 text-gradiant text-sm"><i class="fa fa-users px-1"></i>Roster</a>
-                        <a [routerLink]="['/team', team.id]" fragment="schedule" class="text-gradiant text-sm"><i class="fa fa-calendar px-1"></i>Schedule</a></dd>
+                    <dt class="col-4" *ngIf="team._id != undefined"></dt>
+                    <dd class="col-8" *ngIf="team._id != undefined">
+                        <a [routerLink]="['/team', team._id]" fragment="roster" class="px-2 text-gradiant text-sm"><i class="fa fa-users px-1"></i>Roster</a>
+                        <a [routerLink]="['/team', team._id]" fragment="schedule" class="text-gradiant text-sm"><i class="fa fa-calendar px-1"></i>Schedule</a></dd>
                     <dt class="col-4"></dt>
                     <dd class="col-8"><a href="mailto:{{team.coach_email}}"><i class="fa fa-envelope px-2"></i>{{team.coach}}</a></dd>
                     <dt class="col-4"></dt>

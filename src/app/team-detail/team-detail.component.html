@@ -37,7 +37,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let player of players" (click)="player.showProfile ? viewProfile(player.id) :  null">
+                                <tr *ngFor="let player of players" (click)="player.showProfile ? viewProfile(player._id) :  null">
                                   <td>
                                   <div class="d-flex px-2 py-1">
                                       <div>
@@ -49,13 +49,13 @@
                                   </div>
                                   </td>
                                   <td>
-                                      <p class="text-md font-weight-bold mb-0">{{player.academics.gradYear}}</p>
+                                      <p class="text-md font-weight-bold mb-0">{{player.academic.gradYear}}</p>
                                   </td>
                                   <td class="align-middle text-center text-sm">
-                                      <p class="text-md font-weight-bold mb-0">{{player.athletics.position}}</p>
+                                      <p class="text-md font-weight-bold mb-0">{{player.athletic.position}}</p>
                                   </td>
                                   <td class="align-middle text-center text-sm">
-                                      <p class="text-md font-weight-bold mb-0">{{player.athletics.jersey}}</p>
+                                      <p class="text-md font-weight-bold mb-0">{{player.athletic.jersey}}</p>
                                   </td>
                                 </tr>
                             </tbody>
@@ -115,8 +115,8 @@
 
 
         </div>
-    </div>     
-</section> 
+    </div>
+</section>
 <section>
     <div class="container">
         <div class="row py-5">
@@ -133,4 +133,4 @@
       </div>
 </section>
 
-        
+

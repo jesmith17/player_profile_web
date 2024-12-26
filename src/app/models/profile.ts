@@ -5,13 +5,13 @@ import { SocialMedia } from "./social-media";
 
 export interface Profile {
 
-    id: string;
+    _id: string;
     firstName: string;
     lastName: string;
     height: string;
     weight: number;
-    academics: Academics;
-    athletics: Athletics;
+    academic: Academics;
+    athletic: Athletics;
     email: string;
     picUrl: string;
     phone: string;
@@ -23,6 +23,6 @@ export interface Profile {
     social_media: SocialMedia[];
     highlights: Highlight[];
     showProfile:boolean;
-    
-    
+
+
 }

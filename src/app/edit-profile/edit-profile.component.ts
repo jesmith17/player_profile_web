@@ -30,9 +30,9 @@ export class EditProfileComponent implements OnInit {
       phone: ['', Validators.required],
       height: [''],
       weight: [''],
-      picUrl: ['', Validators.required], 
+      picUrl: ['', Validators.required],
       social_media: this.fb.array([])
-    
+
     })
 
     this.academicsForm = this.fb.group({
@@ -69,28 +69,28 @@ export class EditProfileComponent implements OnInit {
       if (this.id){  // Only patch the forms if it's an edit and not new
         this.data = this.service.getProfile(this.id);
         this.data.subscribe((data: Profile) => {
-          this.id = data.id;
+          this.id = data._id;
           for (var media of data.social_media) {
             this.addSocialMedia();
           }
           this.profileForm.patchValue(data);
-          for (var award of data.academics.awards){
+          for (var award of data.academic.awards){
             this.addAcademicAward();
           }
-          for (var club of data.academics.clubs){
+          for (var club of data.academic.clubs){
             this.addAcademicClub();
           }
-          this.academicsForm.patchValue(data.academics);
-          for (var award of data.athletics.awards){
+          this.academicsForm.patchValue(data.academic);
+          for (var award of data.athletic.awards){
             this.addAthleticAward();
           }
-          for (var team of data.athletics.teams){
+          for (var team of data.athletic.teams){
             this.addTeam();
           }
-          for (var position of data.athletics.position){
+          for (var position of data.athletic.position){
             this.addPosition();
           }
-          this.athleticsForm.patchValue(data.athletics);
+          this.athleticsForm.patchValue(data.athletic);
           for (var highlight of data.highlights){
             this.addHighlight();
           }
@@ -180,10 +180,10 @@ export class EditProfileComponent implements OnInit {
 
   saveProfile(): any {
     this.service.savePlayer(this.profileForm.value, this.id).subscribe((profile:Profile) => {
-      this.id = profile.id;
+      this.id = profile._id;
       console.log(`ID has been set to a value of ${this.id}`);
     })
-    
+
   }
 
   saveAcademics(): any {
@@ -217,4 +217,4 @@ export class EditProfileComponent implements OnInit {
 
 
 
-} 
+}

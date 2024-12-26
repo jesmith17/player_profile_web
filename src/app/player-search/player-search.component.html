@@ -23,7 +23,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let player of data" (click)="viewProfile(player.id)">
+                        <tr *ngFor="let player of data" (click)="viewProfile(player._id)">
                             <td>
                             <div class="d-flex px-2 py-1">
                                 <div>
@@ -36,10 +36,10 @@
                             </div>
                             </td>
                             <td>
-                                <p class="text-sm font-weight-bold mb-0">{{player.academics.gradYear}}</p>
+                                <p class="text-sm font-weight-bold mb-0">{{player.academic.gradYear}}</p>
                             </td>
                             <td class="align-middle text-center text-sm">
-                                <p class="text-sm font-weight-bold mb-0">{{player.athletics.position}}</p>
+                                <p class="text-sm font-weight-bold mb-0">{{player.athletic.position}}</p>
                             </td>
                             <td class="align-middle text-center">
                                 <p class="text-sm font-weight-bold mb-0"><a href="{{player.highlights[0].url}}" target="_blank"><i class="fa fa-youtube px-2"></i>{{player.highlights[0].description}}</a></p>

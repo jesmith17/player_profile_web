@@ -2,7 +2,7 @@ import { Game } from "./game";
 
 export interface Team {
 
-    id: string;
+    _id: string;
     team_name: string;
     coach:string;
     coach_email: string;
