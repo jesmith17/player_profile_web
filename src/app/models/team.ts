@@ -1,4 +1,5 @@
 import { Game } from "./game";
+import {SocialMedia} from "./social-media";
 
 export interface Team {
 
@@ -8,4 +9,5 @@ export interface Team {
     coach_email: string;
     games: Game[];
     team_logo: string;
+    social_media: SocialMedia[];
 }

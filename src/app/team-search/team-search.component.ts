@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AppService } from '../app.service';
 import { Team } from '../models/team';
+import {AnalyticsService} from "../analytics.service";
 
 @Component({
   selector: 'app-team-search',
@@ -16,7 +17,7 @@ export class TeamSearchComponent implements OnInit{
 
   data!: Observable<Team[]>;
 
-  constructor(private service: AppService, private fb: FormBuilder,private router: Router){
+  constructor(private service: AppService, private fb: FormBuilder,private router: Router, private analyticsService: AnalyticsService){
     this.searchForm = this.fb.group({
       name: ['', Validators.required]
     });
@@ -31,6 +32,7 @@ export class TeamSearchComponent implements OnInit{
 
   searchTeams(form:FormGroup) {
     this.data = this.service.teamSearch(form.value.name);
+    this.analyticsService.trackEvent('Team Searhced', form.value.name, "TEAM_SEARCH" )
   }
 
   viewTeam(id: string){

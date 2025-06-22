@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Profile } from '../models/profile';
 import { Router } from '@angular/router';
+import {AnalyticsService} from "../analytics.service";
 
 @Component({
   selector: 'app-player-search',
@@ -16,7 +17,7 @@ export class PlayerSearchComponent implements OnInit{
 
   data!: Observable<Profile[]>;
 
-  constructor(private service: AppService, private fb: FormBuilder,private router: Router){
+  constructor(private service: AppService, private fb: FormBuilder,private router: Router, private analyticsService: AnalyticsService){
     this.searchForm = this.fb.group({
       name: ['', Validators.required]
     });
@@ -31,6 +32,7 @@ export class PlayerSearchComponent implements OnInit{
 
   searchPlayers(form:FormGroup) {
     this.data = this.service.playerSearch(form.value.name);
+    this.analyticsService.trackEvent('Player Search', form.value.name, "PLAYER_SEARCH" )
   }
 
   viewProfile(id: string){

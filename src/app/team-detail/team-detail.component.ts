@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { AppService } from '../app.service';
 import { Team } from '../models/team';
 import { Profile } from '../models/profile';
+import {AnalyticsService} from "../analytics.service";
 
 @Component({
   selector: 'app-team-detail',
@@ -18,7 +19,7 @@ export class TeamDetailComponent implements OnInit {
   players?: Observable<Profile[]>;
   
   
-  constructor(private service:AppService, private route:ActivatedRoute, private router: Router){
+  constructor(private service:AppService, private route:ActivatedRoute, private router: Router, private analyticsService: AnalyticsService){
     this.url = window.location.href;
   }
 
@@ -26,6 +27,7 @@ export class TeamDetailComponent implements OnInit {
     this.route.paramMap.subscribe( paramMap => {
       var id = paramMap.get('id')!;
       this.team = this.service.getTeam(id);
+      this.analyticsService.trackEvent('Team Loaded', id, "TEAM_PROFILE_LOAD" )
       this.players = this.service.getPlayers(id);
     })
   }

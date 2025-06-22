@@ -16,17 +16,17 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent, children: [
     {path: 'search', component: PlayerSearchComponent, pathMatch: 'full'},
     {path: 'new', component: EditProfileComponent, pathMatch: 'full'},
-    {path: ':id', children: 
+    {path: ':id', children:
       [
         {path: '', component: PlayerComponent},
         {path: 'edit', component: EditProfileComponent, pathMatch: 'full', canActivate:[AuthGuard]}
       ]
     }
-    
+
   ]},
   {path: 'team', children: [
     {path: 'search', component: TeamSearchComponent, pathMatch: 'full'},
-    {path: ':id', children: 
+    {path: ':id', children:
       [
         {path: '', component: TeamDetailComponent},
       ]
@@ -35,6 +35,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
   {path: 'home', component: LandingComponent},
+  {path: 'qrcode', component: QrgeneratorComponent},
   {path: '**', redirectTo: 'home', pathMatch: 'full'}
 
 ];

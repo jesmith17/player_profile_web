@@ -7,12 +7,18 @@
                 </div>
                 <div class="col-lg-8 col-sm-9">
                     <h2 class="mb-0 text-gradiant text-dark">{{team.team_name}}</h2>
+                    <div class="row py-lg-3 py-1">
+                      <dt class="col-2">Coach</dt><dd class="col-10">{{team.coach}}</dd>
+                      <dt class="col-2">Email</dt><dd class="col-10"><a href="mailto:{{team.coach_email}}" class="icon-link"><i class="ni ni-email-83 px-2"></i>{{team.coach_email}}</a>
+                      <dt class="col-2">Social Media</dt><dd class="col-10">
+                      <ul class="list-inline">
+                        <li class="list-inline-item" *ngFor="let media of team.social_media"><a href="{{media.url}}" target="_blank"><i class="fa fa-brands fa-{{media.type}} px-2"></i>{{media.acct_id}}</a></li>
+                      </ul>
+                    </dd>
+                  </div>
                 </div>
             </div>
-            <div class="row py-lg-5 py-3">
-                <dt class="col-2">Coach</dt><dd class="col-10">{{team.coach}}</dd>
-                <dt class="col-2">Email</dt><dd class="col-10"><a href="mailto:{{team.coach_email}}" class="icon-link"><i class="ni ni-email-83 px-2"></i>{{team.coach_email}}</a>
-            </div>
+
         </div>
     </div>
 </section>
@@ -20,7 +26,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-sm-10" *ngIf="players | async as players">
-                <div class="card card-plain card-blog" id="roster">
+                <div class="card card-plain card-blog px-1" id="roster">
                     <div class="card-title">
                         <h3>Roster</h3>
                     </div>
@@ -33,7 +39,6 @@
                                 <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 ps-2">Grad Year</th>
                                 <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Positions</th>
                                 <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Jersey</th>
-                                <th class="text-secondary opacity-7"></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -41,21 +46,23 @@
                                   <td>
                                   <div class="d-flex px-2 py-1">
                                       <div>
-                                        <img src="{{player.picUrl || './assets/img/SBV_Logo_Photo.png'}}" class="avatar avatar-xl me-3">
+                                        <img src="{{player.picUrl || './assets/img/SBV_Logo_Photo.png'}}" class="avatar avatar-xl me-2">
                                       </div>
                                       <div class="d-flex flex-column justify-content-center">
-                                      <h6 class="mb-0 text-md">{{player.firstName}} {{player.lastName}}  <i class="fa fa-external-link" *ngIf="player.showProfile"></i></h6>
+                                      <div class="mb-0 text-lg text-bolder">{{player.firstName}} {{player.lastName}}
+                                        <i class="fa fa-external-link text-sm" *ngIf="player.showProfile"></i></div>
+                                        <h6 class="text-xs">Recruitment: {{ player.athletic?.recruitment}}</h6>
                                       </div>
                                   </div>
                                   </td>
                                   <td>
-                                      <p class="text-md font-weight-bold mb-0">{{player.academic.gradYear}}</p>
+                                      <p class="text-lg font-weight-bold mb-0">{{player.academic?.gradYear}}</p>
                                   </td>
                                   <td class="align-middle text-center text-sm">
-                                      <p class="text-md font-weight-bold mb-0">{{player.athletic.position}}</p>
+                                      <p class="text-lg font-weight-bold mb-0">{{player.athletic?.position}}</p>
                                   </td>
                                   <td class="align-middle text-center text-sm">
-                                      <p class="text-md font-weight-bold mb-0">{{player.athletic.jersey}}</p>
+                                      <p class="text-lg font-weight-bold mb-0">{{player.athletic?.jersey}}</p>
                                   </td>
                                 </tr>
                             </tbody>
@@ -64,8 +71,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-sm-10">
-                <div class="card card-plain card-blog"  id="schedule">
+            <div class="col-lg-6 col-sm-10 px-2">
+                <div class="card card-plain card-blog ms-1"  id="schedule">
                     <div class="card-title">
                         <h3>Schedule</h3>
                     </div>
