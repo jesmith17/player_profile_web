@@ -1,7 +1,6 @@
 {
   "hosting": {
-    "source": ".",
-    "public": "dist/player-profile",
+    "public": "/dist/player-profile",
     "rewrites": [
       {
         "source": "**",
