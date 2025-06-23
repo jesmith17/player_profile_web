@@ -20,7 +20,7 @@ export class AppService {
 
   public getPlayers(team_id: string): Observable<Profile[]> {
     let teamFilter = new HttpParams().set('team', team_id);
-    return this.http.get<Profile[]>(`${this.apiUrl}/players`)
+    return this.http.get<Profile[]>(`${this.apiUrl}/players`, {params: teamFilter})
   }
 
   public playerSearch(criteria: string): Observable<Profile[]>{
