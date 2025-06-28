@@ -14,31 +14,32 @@ import { User } from './models/user';
 export class AuthService {
 
   private jwtHelper = new JwtHelperService();
-  user?: Observable<User>;
-   
+  private userSubject = new BehaviorSubject<User | null >(null);
+
+  public currentUser$ = this.userSubject.asObservable();
+
   private token?: string |  null;
 
   constructor(private http: HttpClient) {
     this.token = localStorage.getItem('currentUser');
     if (this.hasValidToken() && this.token != null){
-      // Retrieve user and load. 
+      // Retrieve user and load.
       this.getUser(this.jwtHelper.decodeToken(this.token)['jti']);
-    } else {
-      console.log('User is empty, hope they didnt need a protected page')
     }
   }
 
   login(username: string, password: string): Observable<boolean> {
     const expandedHeaders = this.prepareHeader();
-    return this.http.post(environment.apiUrl + '/login', {user: {email: username, password: password}}, expandedHeaders)
+    return this.http.post(environment.apiUrl + '/users/login', {email: username, password: password}, expandedHeaders)
       .pipe(
         map((resp: any) => {
+          console.log(resp.headers)
           const headers = resp.headers.get('Authorization').split(' ');
           const token = headers[headers.length - 1 ];
           if (token != null) {
             this.token = token;
             localStorage.setItem('currentUser', token);
-            this.user = new Observable(resp.body);
+            this.userSubject.next(resp.body);
             return true;
           } else {
             return false;
@@ -48,7 +49,9 @@ export class AuthService {
   }
 
  getUser(jti: string): void {
-   this.user = this.http.get<User>(environment.apiUrl + `/users/registrations/${jti}`);
+   this.http.get<User>(environment.apiUrl + `/users/sessions`).subscribe((user:User) => {
+     this.userSubject.next(user)
+   })
  }
 
 
@@ -56,7 +59,6 @@ export class AuthService {
 
   logout() {
     this.token = null;
-    console.log("Logout got called");
     localStorage.removeItem('currentUser');
   }
 

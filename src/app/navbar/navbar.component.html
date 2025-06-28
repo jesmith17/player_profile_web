@@ -11,25 +11,32 @@
       <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0 ms-lg-12 ps-lg-5" id="navigation">
         <ul class="navbar-nav navbar-nav-hover w-100">
           <li class="nav-item my-auto ms-3 ms-lg-0 d-none d-md-block">
-            <a [routerLink]="['/profile/search']" class="btn btn-md bg-gradient-info btn-round mb-0 me-1 mt-2 mt-md-0">Players</a>
+            <a [routerLink]="['/profile/search']" class="btn btn-md bg-gradient-info btn-round mb-0 me-3 mt-2 mt-md-0">Players</a>
           </li>
           <li class="nav-item my-auto ms-3 ms-lg-0 d-none d-md-block">
-            <a [routerLink]="['/team/search']" class="btn btn-md bg-gradient-secondary btn-round mb-0 me-1 mt-2 mt-md-0">Teams</a>
+            <a [routerLink]="['/team/search']" class="btn btn-md bg-gradient-secondary btn-round mb-0 me-3 mt-2 mt-md-0">Teams</a>
           </li>
-          <li class="nav-item my-auto ms-3 ms-lg-0 d-none d-md-block" *ngIf="!user">
-            <a [routerLink]="['/login']" class="btn btn-md bg-gradient-primary btn-round mb-0 me-1 mt-2 mt-md-0">Admin Login</a>
-          </li>
-          <li class="nav-item my-auto ms-3 ms-lg-0 d-none d-md-block" *ngIf="user">
-            <a [routerLink]="['/logout']" class="btn btn-md bg-gradient-primary btn-round mb-0 me-1 mt-2 mt-md-0">Logout</a>
-          </li>
-          <li class="nav-item my-auto ms-3 ms-lg-0 d-block d-md-none">
+
+          <li class="nav-item my-auto px-3 ms-lg-0 d-block d-md-none">
             <a [routerLink]="['/profile/search']" class="mb-0 me-1 mt-2 mt-md-0 text-white">Players</a>
           </li>
           <li class="nav-item my-auto ms-3 ms-lg-0 d-block d-md-none">
             <a [routerLink]="['/team/search']" class="mb-0 me-1 mt-2 mt-md-0 text-white">Teams</a>
           </li>
-          <li class="nav-item my-auto ms-3 ms-lg-0 d-block d-md-none">
+        </ul>
+        <ul class="navbar-nav navbar-nav-hover w-100">
+          <li class="nav-item my-auto ms-3 ms-lg-0 d-none d-md-block" *ngIf="!user">
+            <a [routerLink]="['/login']" class="btn btn-md bg-gradient-primary btn-round mb-0 ms-4 mt-2 mt-md-0">Admin Login</a>
+          </li>
+          <li class="nav-item my-auto ms-3 ms-lg-0 d-none d-md-block" *ngIf="user">
+            <a [routerLink]="['/logout']" class="btn btn-md bg-gradient-primary btn-round mb-0 me-1 mt-2 mt-md-0">Logout</a>
+          </li>
+
+          <li class="nav-item my-auto ms-3 ms-lg-0 d-block d-md-none" *ngIf="!user">
             <a [routerLink]="['/login']" class="mb-0 me-1 mt-2 mt-md-0 text-white">Admin Login</a>
+          </li>
+          <li class="nav-item my-auto ms-3 ms-lg-0 d-block d-md-none" *ngIf="user">
+            <a [routerLink]="['/logout']" class="mb-0 me-1 mt-2 mt-md-0 text-white">Logout</a>
           </li>
         </ul>
       </div>

@@ -10,10 +10,11 @@ import { User } from '../models/user';
 })
 export class NavbarComponent {
 
-  user?: Observable<User>;
+  user: Observable<User | null>;
 
   constructor(private authService: AuthService){
-    //this.user = this.authService.user;
+    this.user = this.authService.currentUser$;
+    console.log(this.user)
   }
 
 }

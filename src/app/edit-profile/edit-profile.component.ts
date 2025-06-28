@@ -50,6 +50,8 @@ export class EditProfileComponent implements OnInit {
       experience: [''],
       position: this.fb.array([]),
       jersey: [''],
+      recruitment: [''],
+      committed_school: [''],
       awards: this.fb.array([]),
       teams: this.fb.array([])
     });
@@ -124,7 +126,7 @@ export class EditProfileComponent implements OnInit {
 
   addHighlight() {
     const highlight = this.mediaForm.controls["highlights"] as FormArray;
-    highlight.push(this.fb.group({
+    highlight.insert(0, this.fb.group({
       type:['', Validators.required],
       url: ['', Validators.required],
       description: ['', Validators.required]
@@ -134,6 +136,7 @@ export class EditProfileComponent implements OnInit {
   addTeam() {
     const team = this.athleticsForm.controls["teams"] as FormArray;
     team.push(this.fb.group({
+      _id: [''],
       team_name:['', Validators.required],
       coach: ['', Validators.required],
       coach_email: ['', Validators.required]
@@ -147,6 +150,40 @@ export class EditProfileComponent implements OnInit {
       type:['', Validators.required],
       acct_id: ['', Validators.required]
     }))
+  }
+
+  removeEntry(index:number, controlName:string){
+    var control;
+    switch (controlName){
+      case 'academic.awards':
+        control = this.academicsForm.controls['awards'] as FormArray;
+        control.removeAt(index);
+        break;
+      case 'clubs':
+        control = this.academicsForm.controls['clubs'] as FormArray;
+        control.removeAt(index);
+        break;
+      case 'athletic.awards':
+        control = this.athleticsForm.controls['awards'] as FormArray;
+        control.removeAt(index);
+        break;
+      case 'social_media':
+        control = this.profileForm.controls['social_media'] as FormArray;
+        control.removeAt(index);
+        break;
+      case 'teams':
+        control = this.athleticsForm.controls['teams'] as FormArray;
+        control.removeAt(index);
+        break;
+      case 'highlights':
+        control = this.mediaForm.controls['highlights'] as FormArray;
+        control.removeAt(index);
+        break;
+      case 'positions':
+        control = this.athleticsForm.controls['position'] as FormArray;
+        control.removeAt(index);
+        break;
+    }
   }
 
 

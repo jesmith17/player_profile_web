@@ -20,6 +20,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { QrgeneratorComponent } from './qrgenerator/qrgenerator.component';
 import { TeamDetailComponent } from './team-detail/team-detail.component';
 import { TeamSearchComponent } from './team-search/team-search.component';
+import {QrCardComponent} from "./qr-card/qr-card.component";
 
 @NgModule({
   declarations: [
@@ -42,9 +43,10 @@ import { TeamSearchComponent } from './team-search/team-search.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    QRCodeModule
-    
-],
+    QRCodeModule,
+    QrCardComponent
+
+  ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true},{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

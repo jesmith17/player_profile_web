@@ -1,0 +1,15 @@
+<section>
+  <div class="container">
+    <div class="row py-5">
+      <div class="col-3">
+        <div class="card">
+          <h6 class="p-2 card-title">QR Code</h6>
+          <p class="card-subtitle px-2">Use this QR code to reference back to this profile</p>
+          <div class="card-body">
+            <qrcode [qrdata]="url" [width]="180" [errorCorrectionLevel]="'M'"></qrcode>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

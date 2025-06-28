@@ -33,7 +33,7 @@ export class AuthInterceptor implements HttpInterceptor {
             headers: req.headers.set('Authorization', `Bearer ${token}`)
           });
         }
-          
+
         return next.handle(clonedRequest).pipe(tap(
           (event: HttpEvent<any>) => {}, (err: any) => {
             if (err instanceof HttpErrorResponse && err.status === 401) {
@@ -42,6 +42,6 @@ export class AuthInterceptor implements HttpInterceptor {
             }}
           )
         );
-      
+
     }
 }

@@ -12,15 +12,13 @@ import {AnalyticsService} from "../analytics.service";
   styleUrl: './team-detail.component.sass'
 })
 export class TeamDetailComponent implements OnInit {
-  
-  url: string;
+
   team?:Observable<Team>;
 
   players?: Observable<Profile[]>;
-  
-  
+
+
   constructor(private service:AppService, private route:ActivatedRoute, private router: Router, private analyticsService: AnalyticsService){
-    this.url = window.location.href;
   }
 
   ngOnInit(): void {

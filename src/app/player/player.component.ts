@@ -18,12 +18,12 @@ export class PlayerComponent implements OnInit{
 url: string;
 
 data: Observable<Profile> | undefined
-user?: Observable<User>
+user: Observable<User | null>
 
 
 constructor(private service: AppService, private route: ActivatedRoute, private authService: AuthService, private analyticsService: AnalyticsService){
   this.url = window.location.href;
-  this.user = this.authService.user;
+  this.user = this.authService.currentUser$;
 }
 
 ngOnInit(): void {
@@ -34,7 +34,7 @@ ngOnInit(): void {
 })
 
 
-  
+
 }
 
 

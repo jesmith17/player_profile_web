@@ -45,9 +45,9 @@ export class AppService {
 
     let player = {player: data}
     if (id){
-      return this.http.put<Profile>(`${this.apiUrl}/players/${id}`,{player: data})
+      return this.http.put<Profile>(`${this.apiUrl}/players/${id}`, data)
     } else {
-      return this.http.post<Profile>(`${this.apiUrl}/players`,{player: data})
+      return this.http.post<Profile>(`${this.apiUrl}/players`, data)
     }
   }
 

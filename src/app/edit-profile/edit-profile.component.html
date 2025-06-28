@@ -26,11 +26,11 @@
                   <label for="lastName" class="form-label">Last Name</label>
                 </div>
               </ng-container>
-              <div class="mb-3 form-floating">
+              <div class="col-6 mb-3 form-floating">
                 <input formControlName="email" type="text" name="email" id="email" class="form-control"/>
                 <label for="email" class="form-label">Email</label>
               </div>
-              <div class="mb-3 form-floating">
+              <div class="col-6 mb-3 form-floating">
                 <input formControlName="phone" type="text" name="phone" id="phone" class="form-control"/>
                 <label for="phone" class="form-label">Phone</label>
               </div>
@@ -38,15 +38,15 @@
                 <textarea rows="60" formControlName="bio" type="text" name="bio" id="bio" class="form-control input-height-lg" style="min-height: 300px;"></textarea>
                 <label for="bio" class="form-label">Bio</label>
               </div>
-              <div class="mb-3 form-floating">
+              <div class=" col-4 mb-3 form-floating">
                 <input formControlName="height" type="text" name="height" id="height" class="form-control"/>
                 <label for="height" class="form-label">Height</label>
               </div>
-              <div class="mb-3 form-floating">
+              <div class="col-4 mb-3 form-floating">
                 <input formControlName="weight" type="text" name="weight" id="weight" class="form-control"/>
                 <label for="weight" class="form-label">Weight</label>
               </div>
-              <div class="mb-3 form-floating">
+              <div class="col-6 mb-3 form-floating">
                 <input formControlName="picUrl" type="text" name="picUrl" id="picUrl" class="form-control"/>
                 <label for="picUrl" class="form-label">Picture URL</label>
               </div>
@@ -54,14 +54,14 @@
                 <div *ngFor="let media of getSocialMedia(); index as i">
                   <ng-container [formGroupName]="i">
                     <div class="row">
-                      <div class="mb-3 form-floating col">
+                      <div class="mb-3 form-floating col-3">
                         <select class="form-select" formControlName="type" name="type" id="type" class="form-control">
                           <option value="twitter"><i class="fab fa-twitter px-2">Twitter</i></option>
                           <option value="instagram"><i class="fab fa-instagram px-2">Instagram</i></option>
                         </select>
                         <label for="type" class="form-label">Type</label>
                       </div>
-                      <div class="mb-3 form-floating col">
+                      <div class="mb-3 form-floating col-3">
                         <input formControlName="acct_id" type="text" name="acct_id" id="acct_id" class="form-control"/>
                         <label for="acct_id" class="form-label">ID</label>
                       </div>
@@ -84,12 +84,10 @@
           <form class="g-3" [formGroup]="academicsForm" (ngSubmit)="saveAcademics()">
           <div class="row">
             <div class="col-12"><h5>Academic Info</h5></div>
-            <div class="mb-3 form-floating">
+            <div class="col mb-3 form-floating">
               <input formControlName="gpa" type="text" name="gpa" id="gpa" class="form-control"/>
               <label for="gpa" class="form-label">GPA</label>
             </div>
-          </div>
-          <div class="row">
             <div class="mb-3 form-floating col">
               <input formControlName="classRank" type="text" name="classRank" id="classRank" class="form-control"/>
               <label for="classRank" class="form-label">Class Rank</label>
@@ -98,8 +96,6 @@
               <input formControlName="classSize" type="text" name="classSize" id="classSize" class="form-control"/>
               <label for="classSize" class="form-label">Class Size</label>
             </div>
-          </div>
-          <div class="row">
             <div class="mb-3 form-floating col">
               <input formControlName="act" type="text" name="act" id="act" class="form-control"/>
               <label for="act" class="form-label">ACT</label>
@@ -110,14 +106,17 @@
             </div>
           </div>
           <ng-container formArrayName="awards">
-            <h6>Awards</h6>
-            <div *ngFor="let award of getAcademicAwards(); index as i">
-                <div class="row">
-                  <div class="mb-3 form-floating col">
-                    <input [formControlName]="i" type="text" name="i" id="i" class="form-control"/>
-                    <label for="i" class="form-label">Award</label>
-                  </div>
-                </div>
+            <h6 class="pt-5">Awards</h6>
+            <div class="row"  *ngFor="let award of getAcademicAwards(); index as i">
+              <div class="mb-3 form-floating col-10">
+                <input [formControlName]="i" type="text" name="i" id="i" class="form-control"/>
+                <label for="i" class="form-label">Award</label>
+              </div>
+              <div class="col-2">
+                <button class="rounded-circle bg-gradient-danger shadow text-center text-xxs" (click)="removeEntry(i, 'academic.awards')">
+                  <i class="fas fa-minus opacity-10"></i>
+                </button>
+              </div>
             </div>
             <div class="col mb-3">
               <button class="rounded-circle bg-gradient-info shadow text-center" (click)="addAcademicAward()">
@@ -126,22 +125,25 @@
             </div>
           </ng-container>
           <ng-container formArrayName="clubs">
-            <h6>Clubs</h6>
-            <div *ngFor="let club of getAcademicClubs(); index as i">
-                <div class="row">
-                  <div class="mb-3 form-floating col">
-                    <input [formControlName]="i" type="text" name="i" id="i" class="form-control"/>
-                    <label for="i" class="form-label">Club</label>
-                  </div>
-                </div>
+            <h6 class="pt-5">Clubs</h6>
+            <div class="row"  *ngFor="let club of getAcademicClubs(); index as i">
+              <div class="mb-3 form-floating col-10">
+                <input [formControlName]="i" type="text" name="i" id="i" class="form-control"/>
+                <label for="i" class="form-label">Club</label>
+              </div>
+              <div class="col-2">
+                <button class="rounded-circle bg-gradient-danger shadow text-center text-xxs" (click)="removeEntry(i, 'clubs')">
+                  <i class="fas fa-minus opacity-10"></i>
+                </button>
+              </div>
             </div>
-            <div class="col mb-3">
+            <div class="col-12 mb-3">
               <button class="rounded-circle bg-gradient-info shadow text-center" (click)="addAcademicClub()">
                 <i class="fas fa-plus opacity-10"></i>
               </button>
             </div>
           </ng-container>
-          <div class="row">
+          <div class="row pt-3">
             <div class="form-floating">
               <button class="btn bg-gradient-primary mx-1" type="submit">Save Academics</button>
               <button class="btn btn-outline-secondary" type="reset">Reset</button>
@@ -155,22 +157,39 @@
           <form class="g-3" [formGroup]="athleticsForm" (ngSubmit)="saveAthletics()">
             <div class="row">
               <div class="col-12"><h5>Athletic Info</h5></div>
-              <div class="mb-3 form-floating">
-                <input formControlName="experience" type="text" name="experience" id="experience" class="form-control"/>
-                <label for="experience" class="form-label">Years Exp</label>
+              <div class="row">
+                <div class="col-6 mb-3 form-floating">
+                  <input formControlName="experience" type="text" name="experience" id="experience" class="form-control"/>
+                  <label for="experience" class="form-label">Years Exp</label>
+                </div>
+                <div class="col-6 mb-3 form-floating">
+                  <input formControlName="jersey" type="text" name="jersey" id="jersey" class="form-control"/>
+                  <label for="jersey" class="form-label">Jersey #</label>
+                </div>
               </div>
-              <div class="mb-3 form-floating">
-                <input formControlName="jersey" type="text" name="jersey" id="jersey" class="form-control"/>
-                <label for="jersey" class="form-label">Jersey #</label>
+              <div class="row">
+                <div class="col-6 mb-3 form-floating">
+                  <select formControlName="recruitment" type="text" name="recruitment" id="recruitment" class="form-control">
+                    <option value="OPEN">Open</option>
+                    <option value="CLOSED">Closed</option>
+                    <option value="COMMITTED">Committed</option>
+                  </select>
+                  <label for="recruitment" class="form-label">Recruitment Status</label>
+                </div>
+                <div class="col-6 mb-3 form-floating">
+                  <input formControlName="committed_school" type="text" name="committed_school" id="committed_school" class="form-control"/>
+                  <label for="committed_school" class="form-label">Committed School</label>
+                </div>
               </div>
               <ng-container formArrayName="position">
-                <h6>Positions</h6>
-                <div *ngFor="let award of getPositions(); index as i">
-                    <div class="row">
-                      <div class="mb-3 form-floating col-2">
+                <h6 class="pt-4">Positions</h6>
+                <div class="row">
+                    <div class="col-2 mb-3 form-floating" *ngFor="let award of getPositions(); index as i">
                         <input [formControlName]="i" type="text" name="i" id="i" class="form-control"/>
                         <label for="i" class="form-label">Position</label>
-                      </div>
+                        <button class="rounded-circle bg-gradient-danger shadow text-center text-xxs" (click)="removeEntry(i, 'positions')">
+                          <i class="fas fa-minus opacity-10"></i>
+                        </button>
                     </div>
                 </div>
                 <div class="col mb-3">
@@ -180,14 +199,18 @@
                 </div>
               </ng-container>
               <ng-container formArrayName="awards">
-                <h6>Awards</h6>
-                <div *ngFor="let award of getAthleticsAwards(); index as i">
-                    <div class="row">
-                      <div class="mb-3 form-floating col">
-                        <input [formControlName]="i" type="text" name="i" id="i" class="form-control"/>
-                        <label for="i" class="form-label">Award</label>
-                      </div>
-                    </div>
+                <h6 class="pt-5">Awards</h6>
+                <div class="row" *ngFor="let award of getAthleticsAwards(); index as i">
+                  <div class="mb-3 form-floating col-10">
+                    <input [formControlName]="i" type="text" name="i" id="i" class="form-control"/>
+                    <label for="i" class="form-label">Award</label>
+                  </div>
+                  <div class="col-2">
+                    <button class="rounded-circle bg-gradient-danger shadow text-center text-xxs" (click)="removeEntry(i, 'athletic.awards')">
+                      <i class="fas fa-minus opacity-10"></i>
+                    </button>
+                  </div>
+
                 </div>
                 <div class="col mb-3">
                   <button class="rounded-circle bg-gradient-info shadow text-center" (click)="addAthleticAward()">
@@ -195,22 +218,30 @@
                   </button>
                 </div>
               </ng-container>
-              <div class="col-12"><h5>Teams</h5></div>
+              <div class="col-12">
+                <h6 class="pt-5">Teams</h6>
+              </div>
               <ng-container formArrayName="teams">
                 <div *ngFor="let team of getTeams(); index as i">
                   <ng-container [formGroupName]="i">
-                    <div class="row">
-                      <div class="mb-3 form-floating col-6">
+                    <div class="row pb-4">
+                      <div class="mb-3 form-floating col-4">
+                        <input formControlName="_id" name="team_id" id="team_id" class="hidden"/>
                         <input formControlName="team_name" name="team_name" id="tyteam_namepe" class="form-control"/>
                         <label for="team_name" class="form-label">Team Name</label>
                       </div>
-                      <div class="mb-3 form-floating col-6">
+                      <div class="mb-3 form-floating col-3">
                         <input formControlName="coach" type="text" name="coach" id="coach" class="form-control"/>
                         <label for="coach" class="form-label">Coaches Name</label>
                       </div>
-                      <div class="mb-3 form-floating col-sm-12">
+                      <div class="mb-3 form-floating col-sm-12 col-md-4">
                         <input formControlName="coach_email" type="text" name="coach_email" id="coach_email" class="form-control"/>
                         <label for="coach_email" class="form-label">Coach Email</label>
+                      </div>
+                      <div class="col-1">
+                        <button class="rounded-circle bg-gradient-danger shadow text-center text-xxs" (click)="removeEntry(i, 'teams')">
+                          <i class="fas fa-minus opacity-10"></i>
+                        </button>
                       </div>
                     </div>
                   </ng-container>

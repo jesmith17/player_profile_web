@@ -25,7 +25,7 @@
 <section class="py-2"  *ngIf="team | async as team">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-sm-10" *ngIf="players | async as players">
+            <div class="col-lg-6 col-sm-10 team-column" *ngIf="players | async as players">
                 <div class="card card-plain card-blog px-1" id="roster">
                     <div class="card-title">
                         <h3>Roster</h3>
@@ -124,20 +124,6 @@
         </div>
     </div>
 </section>
-<section>
-    <div class="container">
-        <div class="row py-5">
-          <div class="col-sm-6 col-lg-3">
-            <div class="card">
-              <div class="card-title">QR Code</div>
-              <p>Use this QR code to reference back to this team profile</p>
-              <div class="card-body">
-                <qrcode [qrdata]="url" [width]="120" [errorCorrectionLevel]="'M'"></qrcode>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-</section>
+<app-qr-card></app-qr-card>
 
 
