@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: "https://us-central1-player-profile-daa1a.cloudfunctions.net/player-profile-svc/api"
+    apiUrl: "https://player-profile-svc-333625412322.us-central1.run.app/api"
   };
