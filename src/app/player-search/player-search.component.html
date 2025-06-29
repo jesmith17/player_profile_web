@@ -41,7 +41,7 @@
                                 <p class="text-md font-weight-bold mb-0">{{player.athletic.position}}</p>
                             </td>
                             <td class="align-middle text-center">
-                                <p class="text-md font-weight-bold mb-0"><a href="{{player.highlights[0].url}}" target="_blank"><i class="fa fa-youtube px-2"></i>{{player.highlights[0].description}}</a></p>
+                                <p class="text-md font-weight-bold mb-0" *ngIf="player.highlights.length > 0"><a href="{{player.highlights[0].url}}" target="_blank"><i class="fa fa-youtube px-2"></i>{{player.highlights[0].description}}</a></p>
                             </td>
                         </tr>
                     </tbody>
