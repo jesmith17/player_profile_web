@@ -4,6 +4,7 @@ import { AppService } from '../app.service';
 import { Profile } from '../models/profile';
 import { Observable } from 'rxjs/internal/Observable';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {Team} from "../models/team";
 
 @Component({
   selector: 'app-edit-profile',
@@ -18,6 +19,11 @@ export class EditProfileComponent implements OnInit {
   academicsForm: FormGroup;
   athleticsForm: FormGroup;
   mediaForm: FormGroup;
+  searchForm: FormGroup;
+
+  teamSearchTerm?: string;
+  showTeamSearch= false;
+  teams?: Observable<Team[]>;
 
   constructor(private route: ActivatedRoute, private service: AppService, private fb: FormBuilder, ){
 
@@ -60,6 +66,10 @@ export class EditProfileComponent implements OnInit {
       highlights: this.fb.array([])
     });
 
+    this.searchForm = this.fb.group({
+      teamName: this.fb.array([])
+    });
+
 
 
   }
@@ -87,7 +97,7 @@ export class EditProfileComponent implements OnInit {
             this.addAthleticAward();
           }
           for (var team of data.athletic.teams){
-            this.addTeam();
+            this.addTeamToForm();
           }
           for (var position of data.athletic.position){
             this.addPosition();
@@ -134,12 +144,23 @@ export class EditProfileComponent implements OnInit {
   }
 
   addTeam() {
+    this.showTeamSearch = true;
+  }
+
+  searchTeams() {
+    if (this.teamSearchTerm) {
+      this.teams = this.service.teamSearch(this.teamSearchTerm);
+    }
+  }
+
+  addTeamToForm() {
     const team = this.athleticsForm.controls["teams"] as FormArray;
     team.push(this.fb.group({
-      _id: [''],
+      team_id: [''],
       team_name:['', Validators.required],
       coach: ['', Validators.required],
-      coach_email: ['', Validators.required]
+      coach_email: ['', Validators.required],
+      jersey: ['', Validators.required],
     }))
   }
 

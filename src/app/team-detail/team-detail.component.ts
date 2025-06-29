@@ -5,6 +5,7 @@ import { AppService } from '../app.service';
 import { Team } from '../models/team';
 import { Profile } from '../models/profile';
 import {AnalyticsService} from "../analytics.service";
+import {Roster} from "../models/roster";
 
 @Component({
   selector: 'app-team-detail',
@@ -14,6 +15,7 @@ import {AnalyticsService} from "../analytics.service";
 export class TeamDetailComponent implements OnInit {
 
   team?:Observable<Team>;
+  currentTeamId?:string;
 
   players?: Observable<Profile[]>;
 
@@ -24,10 +26,15 @@ export class TeamDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe( paramMap => {
       var id = paramMap.get('id')!;
+      this.currentTeamId = id;
       this.team = this.service.getTeam(id);
       this.analyticsService.trackEvent('Team Loaded', id, "TEAM_PROFILE_LOAD" )
       this.players = this.service.getPlayers(id);
     })
+  }
+
+  getCurrentTeamRoster(profile: Profile): Roster | undefined {
+    return profile.athletic.teams.find(roster => roster.team_id === this.currentTeamId);
   }
 
   viewProfile(id: string){

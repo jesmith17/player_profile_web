@@ -158,17 +158,11 @@
             <div class="row">
               <div class="col-12"><h5>Athletic Info</h5></div>
               <div class="row">
-                <div class="col-6 mb-3 form-floating">
+                <div class="col-2 mb-3 form-floating">
                   <input formControlName="experience" type="text" name="experience" id="experience" class="form-control"/>
                   <label for="experience" class="form-label">Years Exp</label>
                 </div>
-                <div class="col-6 mb-3 form-floating">
-                  <input formControlName="jersey" type="text" name="jersey" id="jersey" class="form-control"/>
-                  <label for="jersey" class="form-label">Jersey #</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-6 mb-3 form-floating">
+                <div class="col-3 mb-3 form-floating">
                   <select formControlName="recruitment" type="text" name="recruitment" id="recruitment" class="form-control">
                     <option value="OPEN">Open</option>
                     <option value="CLOSED">Closed</option>
@@ -226,16 +220,21 @@
                   <ng-container [formGroupName]="i">
                     <div class="row pb-4">
                       <div class="mb-3 form-floating col-4">
-                        <input formControlName="_id" name="team_id" id="team_id" class="hidden"/>
-                        <input formControlName="team_name" name="team_name" id="tyteam_namepe" class="form-control"/>
+                        <input formControlName="team_id" name="team_id" id="team_id" type="hidden"/>
+                        <input formControlName="team_name" name="team_name" id="tyteam_namepe" class="form-control" readonly/>
                         <label for="team_name" class="form-label">Team Name</label>
                       </div>
-                      <div class="mb-3 form-floating col-3">
-                        <input formControlName="coach" type="text" name="coach" id="coach" class="form-control"/>
+                      <div class="mb-3 form-floating col-1">
+                        <input formControlName="jersey" type="text" name="jersey" id="jersey" class="form-control"/>
+                        <label for="jersey" class="form-label">Jersey</label>
+                      </div>
+                      <div class="mb-3 form-floating col-2">
+                        <input formControlName="coach" type="text" name="coach" id="coach" class="form-control" readonly/>
                         <label for="coach" class="form-label">Coaches Name</label>
                       </div>
+
                       <div class="mb-3 form-floating col-sm-12 col-md-4">
-                        <input formControlName="coach_email" type="text" name="coach_email" id="coach_email" class="form-control"/>
+                        <input formControlName="coach_email" type="text" name="coach_email" id="coach_email" class="form-control" readonly/>
                         <label for="coach_email" class="form-label">Coach Email</label>
                       </div>
                       <div class="col-1">
@@ -245,6 +244,7 @@
                       </div>
                     </div>
                   </ng-container>
+
                 </div>
                 <div class="col mb-3">
                   <button class="rounded-circle bg-gradient-info shadow text-center" (click)="addTeam()">
@@ -302,3 +302,14 @@
       </section>
       <!-- END Blogs w/ 4 cards w/ image & text & link -->
     </div>
+
+<ng-container *ngIf="showTeamSearch">
+  <div class="modal fade">
+    <div class="mb-3 form-floating col-4 input-group">
+      <input type="text" name="team_name_search" id="team_name_search" class="form-control" [(ngModel)]="teamSearchTerm"/>
+      <label for="team_name_search" class="form-label">Team Name</label>
+      <button class=" text-md btn bg-gradient-info mb-0" type="button" id="button-addon2" (click)="searchTeams()" [disabled]="!teamSearchTerm"><i class="fa fa-search px-2"></i>Search</button>
+    </div>
+  </div>
+</ng-container>
+

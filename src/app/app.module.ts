@@ -8,7 +8,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { PlayerComponent } from './player/player.component';
 import { LandingComponent } from './landing/landing.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HeadersInterceptor } from './headers.interceptor';
 import { PlayerSearchComponent } from './player-search/player-search.component';
 import { QRCodeModule } from 'angularx-qrcode';
@@ -43,6 +43,7 @@ import {QrCardComponent} from "./qr-card/qr-card.component";
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     QRCodeModule,
     QrCardComponent
 

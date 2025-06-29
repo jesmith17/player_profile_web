@@ -61,8 +61,8 @@
                                   <td class="align-middle text-center text-sm">
                                       <p class="text-lg font-weight-bold mb-0">{{player.athletic?.position}}</p>
                                   </td>
-                                  <td class="align-middle text-center text-sm">
-                                      <p class="text-lg font-weight-bold mb-0">{{player.athletic?.jersey}}</p>
+                                  <td class="align-middle text-center text-sm" *ngIf="getCurrentTeamRoster(player) as roster">
+                                      <p class="text-lg font-weight-bold mb-0">{{roster.jersey }}</p>
                                   </td>
                                 </tr>
                             </tbody>

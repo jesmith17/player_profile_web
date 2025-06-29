@@ -111,7 +111,7 @@
                   <dt class="col-3">Teams</dt>
                   <ng-container *ngFor="let team of data.athletic.teams">
                     <dd class="col-8">
-                      <a [routerLink]="['/team', team._id]">{{team.team_name}}<i class="fa fa-external-link ps-2 text-xs"></i></a>
+                      <a [routerLink]="['/team', team.team_id]">{{team.team_name}}<i class="fa fa-external-link ps-2 text-xs"></i></a>
                     </dd>
                     <dt class="col-3"></dt>
                     <dd class="col-8"><a href="mailto:{{team.coach_email}}"><i class="fa fa-envelope px-2"></i>{{team.coach}}</a></dd>

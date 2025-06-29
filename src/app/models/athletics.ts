@@ -1,4 +1,4 @@
-import { Team } from "./team";
+import {Roster} from "./roster";
 
 export interface Athletics {
     recruitment: Recruitment;
@@ -9,7 +9,7 @@ export interface Athletics {
     jersey: Number;
     awards: String[];
     notes: String;
-    teams: Team[];
+    teams: Roster[];
 }
 
 
