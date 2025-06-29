@@ -15,9 +15,6 @@ export interface Profile {
     email: string;
     picUrl: string;
     phone: string;
-    ncaaId: string;
-    jersey: number;
-    position: string[];
     bio: string;
     links: string[];
     social_media: SocialMedia[];

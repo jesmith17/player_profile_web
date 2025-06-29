@@ -5,6 +5,7 @@ export interface Athletics {
     commited_school: string;
     position: String[];
     experience: Number;
+    ncaaId: string;
     jersey: Number;
     awards: String[];
     notes: String;
