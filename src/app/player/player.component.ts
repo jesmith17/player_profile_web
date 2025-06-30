@@ -21,7 +21,7 @@ data: Observable<Profile> | undefined
 user: Observable<User | null>
 
 
-constructor(private service: AppService, private route: ActivatedRoute, private authService: AuthService, private analyticsService: AnalyticsService){
+constructor(private service: AppService, private route: ActivatedRoute, public authService: AuthService, private analyticsService: AnalyticsService){
   this.url = window.location.href;
   this.user = this.authService.currentUser$;
 }

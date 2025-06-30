@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HTTP_INTERCEPTORS, HttpClientModule } from  '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from  '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,38 +21,32 @@ import { QrgeneratorComponent } from './qrgenerator/qrgenerator.component';
 import { TeamDetailComponent } from './team-detail/team-detail.component';
 import { TeamSearchComponent } from './team-search/team-search.component';
 import {QrCardComponent} from "./qr-card/qr-card.component";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    ProfileComponent,
-    PlayerComponent,
-    LandingComponent,
-    NavbarComponent,
-    PlayerSearchComponent,
-    LoginComponent,
-    EditProfileComponent,
-    LogoutComponent,
-    QrgeneratorComponent,
-    TeamDetailComponent,
-    TeamSearchComponent
-  ],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FormsModule,
-    QRCodeModule,
-    QrCardComponent
-
-  ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true},{
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-  }],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        ProfileComponent,
+        PlayerComponent,
+        LandingComponent,
+        NavbarComponent,
+        PlayerSearchComponent,
+        LoginComponent,
+        EditProfileComponent,
+        LogoutComponent,
+        QrgeneratorComponent,
+        TeamDetailComponent,
+        TeamSearchComponent
+    ],
+    bootstrap: [AppComponent], imports: [CommonModule,
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        QRCodeModule,
+        QrCardComponent,
+        NgbModule], providers: [{ provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true }, {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        }, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }

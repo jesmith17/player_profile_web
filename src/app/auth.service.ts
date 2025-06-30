@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, ObservedValueOf, map, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { User } from './models/user';
+import {Role, User} from './models/user';
 
 
 
@@ -33,7 +33,6 @@ export class AuthService {
     return this.http.post(environment.apiUrl + '/users/login', {email: username, password: password}, expandedHeaders)
       .pipe(
         map((resp: any) => {
-          console.log(resp.headers)
           const headers = resp.headers.get('Authorization').split(' ');
           const token = headers[headers.length - 1 ];
           if (token != null) {
@@ -54,12 +53,18 @@ export class AuthService {
    })
  }
 
-
-
+ canEditPlayer(user:User, playerId:string){
+   if (user.role == Role.ADMIN){
+     return true;
+   } else return user.editableIds.includes(playerId);
+ }
 
   logout() {
-    this.token = null;
-    localStorage.removeItem('currentUser');
+    this.http.delete(environment.apiUrl + '/users/logout').subscribe((r:any) => {
+      this.token = null;
+      this.userSubject.next(null);
+      localStorage.removeItem('currentUser');
+    });
   }
 
   public hasValidToken(): boolean {

@@ -6,7 +6,7 @@
                 <form [formGroup]="searchForm">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Player Name" aria-label="Player Name" aria-describedby="button-addon2" formControlName="name">
-                        <button class="btn bg-gradient-info mb-0" type="button" id="button-addon2" (click)="searchPlayers(searchForm)" [disabled]="searchForm.invalid"><i class="fa fa-search px-2"></i>Search</button>
+                        <button class="btn bg-gradient-info mb-0 text-white text-md" type="button" id="button-addon2" (click)="searchPlayers(searchForm)" [disabled]="searchForm.invalid"><i class="fa fa-search px-2"></i>Search</button>
                     </div>
                 </form>
             </div>
@@ -41,8 +41,9 @@
                                 <p class="text-md font-weight-bold mb-0">{{player.athletic.position}}</p>
                             </td>
                             <td class="align-middle text-center">
-                                <p class="text-md font-weight-bold mb-0" *ngIf="player.highlights.length > 0"><a href="{{player.highlights[0].url}}" target="_blank"><i class="fa fa-youtube px-2"></i>{{player.highlights[0].description}}</a></p>
+                                <p class="text-md font-weight-bold mb-0" *ngIf="player.highlights && player.highlights.length > 0"><a href="{{player.highlights[0].url}}" target="_blank"><i class="fa fa-youtube px-2"></i>{{player.highlights[0].description}}</a></p>
                             </td>
+
                         </tr>
                     </tbody>
                 </table>

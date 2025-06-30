@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, signal, TemplateRef, WritableSignal} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppService } from '../app.service';
 import { Profile } from '../models/profile';
 import { Observable } from 'rxjs/internal/Observable';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {Team} from "../models/team";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-edit-profile',
@@ -22,10 +23,10 @@ export class EditProfileComponent implements OnInit {
   searchForm: FormGroup;
 
   teamSearchTerm?: string;
-  showTeamSearch= false;
+  closeResult: WritableSignal<string> = signal('');
   teams?: Observable<Team[]>;
 
-  constructor(private route: ActivatedRoute, private service: AppService, private fb: FormBuilder, ){
+  constructor(private route: ActivatedRoute, private service: AppService, private fb: FormBuilder, private modalService: NgbModal ) {
 
     this.profileForm = this.fb.group({
       _id: ['', Validators.required],
@@ -143,8 +144,15 @@ export class EditProfileComponent implements OnInit {
     }))
   }
 
-  addTeam() {
-    this.showTeamSearch = true;
+  addTeam(content: TemplateRef<any>) {
+      this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl', animation: true }).result.then(
+        (result) => {
+          this.closeResult.set(`Closed with: ${result}`);
+        },
+        (reason) => {
+          //this.closeResult.set(`Dismissed ${this.getDismissReason(reason)}`);
+        },
+      );
   }
 
   searchTeams() {
@@ -152,6 +160,19 @@ export class EditProfileComponent implements OnInit {
       this.teams = this.service.teamSearch(this.teamSearchTerm);
     }
   }
+
+  selectTeam(team:Team) {
+    const teams = this.athleticsForm.controls["teams"] as FormArray;
+    teams.push(this.fb.group({
+      team_id: [team._id],
+      team_name:[team.team_name, Validators.required],
+      coach: [team.coach, Validators.required],
+      coach_email: [team.coach_email, Validators.required],
+      jersey: ['', Validators.required],
+    }))
+    this.modalService.dismissAll();
+  }
+
 
   addTeamToForm() {
     const team = this.athleticsForm.controls["teams"] as FormArray;

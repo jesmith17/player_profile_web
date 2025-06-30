@@ -1,11 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpInterceptor,
-  HttpErrorResponse
-} from '@angular/common/http';
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
@@ -23,7 +17,7 @@ export class AuthInterceptor implements HttpInterceptor {
         // Clone the request to add the new header
         let token = localStorage.getItem('currentUser');
         let clonedRequest = req.clone();
-        if (req.url.indexOf('/login') !== -1 || req.method == 'GET') {
+        if (req.url.indexOf('/login') !== -1 || (req.method == 'GET' && req.url.indexOf('/sessions') == -1)) {
             return next.handle(req.clone());
         }
         if (token == null || this.jwtHelper.isTokenExpired(token)) {
