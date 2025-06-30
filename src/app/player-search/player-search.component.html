@@ -2,12 +2,20 @@
     <div class="container">
       <div class="row">
         <div class="col-12 mx-auto">
-            <div class="card card-plain">
+            <div class="card">
                 <form [formGroup]="searchForm">
+                  <div class="row">
+                  <div class="col-8">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Player Name" aria-label="Player Name" aria-describedby="button-addon2" formControlName="name">
                         <button class="btn bg-gradient-info mb-0 text-white text-md" type="button" id="button-addon2" (click)="searchPlayers(searchForm)" [disabled]="searchForm.invalid"><i class="fa fa-search px-2"></i>Search</button>
+
                     </div>
+                  </div>
+                    <div class="col-4">
+                      <a [routerLink]="['/profile/new']" class="btn bg-gradient-primary mb-0 ms-2 text-white text-md"><i class="fa fa-plus px-2"></i>New Profile</a>
+                    </div>
+                  </div>
                 </form>
             </div>
             <div class="card" *ngIf="data | async as data">
