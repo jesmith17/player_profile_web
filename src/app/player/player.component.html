@@ -42,97 +42,82 @@
   <section class="py-2">
     <div class="container">
       <div class="row">
-        <div class="col-lg-4 col-sm-10 border-column">
-          <div class="card card-plain card-blog">
-            <div class="card-title">
-              <h3>Academics</h3>
-            </div>
-            <div class="card-body px-0">
-              <dl class="row">
-                <dt class="col-4">GPA</dt><dd class="col-8">{{data.academic.gpa}}</dd>
-                <ng-container *ngIf="data.academic.classRank">
-                  <dt class="col-4">Class Rank</dt><dd class="col-8">{{data.academic.classRank}} of {{ data.academic.classSize}}</dd>
+        <div class="col-lg-3 col-sm-10 border-column">
+          <h3>Academics</h3>
+          <dl class="row">
+            <dt class="col-4">GPA</dt><dd class="col-8">{{data.academic.gpa}}</dd>
+            <ng-container *ngIf="data.academic.classRank">
+              <dt class="col-4">Class Rank</dt><dd class="col-8">{{data.academic.classRank}} of {{ data.academic.classSize}}</dd>
+            </ng-container>
+            <ng-container *ngIf="data.academic.act">
+              <dt class="col-4">ACT</dt><dd class="col-8">{{data.academic.act}}</dd>
+            </ng-container>
+            <ng-container *ngIf="data.academic.sat">
+              <dt class="col-4">SAT</dt><dd class="col-8">{{data.academic.sat}}</dd>
+            </ng-container>
+            <ng-container *ngIf="data.academic.clubs && data.academic.clubs.length > 0">
+              <dt class="col-4">Clubs</dt>
+                <ng-container *ngFor="let club of data.academic.clubs">
+                  <dd class="col-8">
+                    {{club}}
+                  </dd>
+                  <dt class="col-4"></dt>
                 </ng-container>
-                <ng-container *ngIf="data.academic.act">
-                  <dt class="col-4">ACT</dt><dd class="col-8">{{data.academic.act}}</dd>
-                </ng-container>
-                <ng-container *ngIf="data.academic.sat">
-                  <dt class="col-4">SAT</dt><dd class="col-8">{{data.academic.sat}}</dd>
-                </ng-container>
-                <ng-container *ngIf="data.academic.clubs && data.academic.clubs.length > 0">
-                  <dt class="col-4">Clubs</dt>
-                    <ng-container *ngFor="let club of data.academic.clubs">
-                      <dd class="col-8">
-                        {{club}}
-                      </dd>
-                      <dt class="col-4"></dt>
-                    </ng-container>
-                  <dd clas="col-9"></dd>
-                </ng-container>
-                <ng-container *ngIf="data.academic.awards && data.academic.awards.length > 0">
-                  <dt class="col-4">Awards</dt>
-                  <ng-container *ngFor="let award of data.academic.awards">
-                    <dd class="col-8">
-                      {{award}}
-                    </dd>
-                    <dt class="col-4"></dt>
-                  </ng-container>
-                  <dd class="col-8"></dd>
-                </ng-container>
-            </dl>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-10 border-column">
-          <div class="card card-plain card-blog">
-            <div class="card-title">
-              <h3>Athletics</h3>
-            </div>
-            <div class="card-body px-0">
-              <dl class="row">
-                <dt class="col-3">NCAA ID</dt>
-                <dd class="col-8">{{ data.athletic.ncaaId }}</dd>
-                <dt class="col-3">Positions</dt>
+              <dd clas="col-9"></dd>
+            </ng-container>
+            <ng-container *ngIf="data.academic.awards && data.academic.awards.length > 0">
+              <dt class="col-4">Awards</dt>
+              <ng-container *ngFor="let award of data.academic.awards">
                 <dd class="col-8">
-                  <span *ngFor="let position of data.athletic.position; index as i">{{position}}<ng-container *ngIf="i< data.athletic.position.length -1"> / </ng-container></span>
+                  {{award}}
                 </dd>
-                <dt class="col-3">Exp.</dt><dd class="col-8">{{data.athletic.experience}}</dd>
-                <ng-container *ngIf="data.athletic.awards && data.athletic.awards.length > 0">
-                  <dt class="col-3">Awards</dt>
-                  <ng-container *ngFor="let award of data.athletic.awards">
-                    <dd class="col-8">
-                      {{award}}
-                    </dd>
-                    <dt class="col-3"></dt>
-                  </ng-container>
-                  <dd class="col-8"></dd>
-                </ng-container>
-                <ng-container *ngIf="data.athletic.teams && data.athletic.teams.length > 0">
-                  <dt class="col-3">Teams</dt>
-                  <ng-container *ngFor="let team of data.athletic.teams">
-                    <dd class="col-8">
-                      <a [routerLink]="['/team', team.team_id]">{{team.team_name}}<i class="fa fa-external-link ps-2 text-xs"></i></a>
-                    </dd>
-                    <dt class="col-3"></dt>
-                    <dd class="col-8"><a href="mailto:{{team.coach_email}}"><i class="fa fa-envelope px-2"></i>{{team.coach}}</a></dd>
-                    <dt class="col-3"></dt>
-                  </ng-container>
-                </ng-container>
-              </dl>
-            </div>
-          </div>
+                <dt class="col-4"></dt>
+              </ng-container>
+              <dd class="col-8"></dd>
+            </ng-container>
+        </dl>
+        </div>
+        <div class="col-lg-5 col-sm-10 border-column">
+          <h3>Athletics</h3>
+          <dl class="row">
+            <dt class="col-3">NCAA ID</dt>
+            <dd class="col-8">{{ data.athletic.ncaaId }}</dd>
+            <dt class="col-3">Positions</dt>
+            <dd class="col-8">
+              <span *ngFor="let position of data.athletic.position; index as i">{{position}}<ng-container *ngIf="i< data.athletic.position.length -1"> / </ng-container></span>
+            </dd>
+            <dt class="col-3">Exp.</dt><dd class="col-8">{{data.athletic.experience}}</dd>
+            <ng-container *ngIf="data.athletic.awards && data.athletic.awards.length > 0">
+              <dt class="col-3">Awards</dt>
+              <ng-container *ngFor="let award of data.athletic.awards">
+                <dd class="col-8">
+                  {{award}}
+                </dd>
+                <dt class="col-3"></dt>
+              </ng-container>
+              <dd class="col-8"></dd>
+            </ng-container>
+            <ng-container *ngIf="data.athletic.teams && data.athletic.teams.length > 0">
+              <dt class="col-3">Teams</dt>
+              <ng-container *ngFor="let team of data.athletic.teams">
+                <dd class="col-8">
+                  <a [routerLink]="['/team', team.team_id]">{{team.team_name}}<i class="fa fa-external-link ps-2 text-xs"></i></a>
+                </dd>
+                <dt class="col-3"></dt>
+                <dd class="col-8"><a href="mailto:{{team.coach_email}}"><i class="fa fa-envelope px-2"></i>{{team.coach}}</a></dd>
+                <dt class="col-3"></dt>
+              </ng-container>
+            </ng-container>
+          </dl>
+          <h3>Media</h3>
+          <ul class="list-unstyled">
+            <li *ngFor="let link of data.highlights"><a href="{{link.url}}" target="_blank"><i class="fa fa-brands fa-youtube px-2"></i>{{link.description}}</a></li>
+          </ul>
         </div>
         <div class="col-lg-4 col-sm-10">
-          <div class="card card-plain card-blog">
-            <div class="card-title">
-              <h3>Media</h3>
-            </div>
-            <div class="card-body px-0">
-              <ul class="list-unstyled">
-                <li *ngFor="let link of data.highlights"><a href="{{link.url}}" target="_blank"><i class="fa fa-brands fa-youtube px-2"></i>{{link.description}}</a></li>
-              </ul>
-            </div>
-          </div>
+          <ng-container *ngIf="games && games.length > 0">
+            <app-games [games]="games"></app-games>
+          </ng-container>
         </div>
       </div>
     </div>

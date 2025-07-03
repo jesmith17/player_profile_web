@@ -6,7 +6,7 @@
               <h3>{{ data.firstName }} {{ data.lastName }}</h3>
             </div>
             <div class="col align-right">
-              <a [routerLink]="['/profile', data._id]" class="btn btn-sm bg-gradient-info btn-round mb-0 me-1 mt-2 mt-md-0 text-white"><i class="fa fa-regular fa-user mx-1"></i>View Profile</a>
+              <a [routerLink]="['/profile', data._id || this.id]" class="btn btn-sm bg-gradient-info btn-round mb-0 me-1 mt-2 mt-md-0 text-white"><i class="fa fa-regular fa-user mx-1"></i>View Profile</a>
             </div>
           </div>
           <form class="g-3" [formGroup]="profileForm" (ngSubmit)="saveProfile()">

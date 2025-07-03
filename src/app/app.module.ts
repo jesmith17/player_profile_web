@@ -22,6 +22,7 @@ import { TeamDetailComponent } from './team-detail/team-detail.component';
 import { TeamSearchComponent } from './team-search/team-search.component';
 import {QrCardComponent} from "./qr-card/qr-card.component";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {GamesComponent} from "./games/games.component";
 
 @NgModule({ declarations: [
         AppComponent,
@@ -38,13 +39,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         TeamSearchComponent
     ],
     bootstrap: [AppComponent], imports: [CommonModule,
-        BrowserModule,
-        AppRoutingModule,
-        ReactiveFormsModule,
-        FormsModule,
-        QRCodeModule,
-        QrCardComponent,
-        NgbModule], providers: [{ provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true }, {
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    QRCodeModule,
+    QrCardComponent,
+    NgbModule, GamesComponent], providers: [{ provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true }, {
             provide: HTTP_INTERCEPTORS,
             useClass: AuthInterceptor,
             multi: true

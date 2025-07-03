@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Profile } from '../models/profile';
 import { Router } from '@angular/router';
 import {AnalyticsService} from "../analytics.service";
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-player-search',
@@ -17,7 +18,7 @@ export class PlayerSearchComponent implements OnInit{
 
   data!: Observable<Profile[]>;
 
-  constructor(private service: AppService, private fb: FormBuilder,private router: Router, private analyticsService: AnalyticsService){
+  constructor(private service: AppService, private fb: FormBuilder,private router: Router, private analyticsService: AnalyticsService, public authService: AuthService){
     this.searchForm = this.fb.group({
       name: ['', Validators.required]
     });

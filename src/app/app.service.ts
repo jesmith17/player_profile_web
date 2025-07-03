@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import {map, Observable} from 'rxjs';
 import { Profile } from './models/profile';
 import { environment } from 'src/environments/environment';
 import { Team } from './models/team';
@@ -38,7 +38,15 @@ export class AppService {
   }
 
   public getTeam(id: string): Observable<Team>{
-    return this.http.get<Team>(`${this.apiUrl}/teams/${id}`)
+    return this.http.get<Team>(`${this.apiUrl}/teams/${id}`).pipe(
+      map(response => ({
+        ...response,
+        games: response.games.map((game: any) => ({
+          ...game,
+          game_time: new Date(game.game_time)
+        }))
+      }))
+    );
   }
 
   public savePlayer(data:any, id?: string): Observable<Profile> {

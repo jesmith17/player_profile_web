@@ -26,101 +26,48 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-sm-10 team-column" *ngIf="players | async as players">
-                <div class="card card-plain card-blog px-1" id="roster">
-                    <div class="card-title">
-                        <h3>Roster</h3>
-                    </div>
-                    <div class="card-body px-0">
-                        <div class="table-responsive">
-                        <table class="table align-items-center mb-0">
-                            <thead>
-                            <tr>
-                                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Player</th>
-                                <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 ps-2">Grad Year</th>
-                                <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Positions</th>
-                                <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Jersey</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let player of players" (click)="player.showProfile ? viewProfile(player._id) :  null">
-                                  <td>
-                                  <div class="d-flex px-2 py-1">
-                                      <div>
-                                        <img src="{{player.picUrl || './assets/img/SBV_Logo_Photo.png'}}" class="avatar avatar-xl me-2">
-                                      </div>
-                                      <div class="d-flex flex-column justify-content-center">
-                                      <div class="mb-0 text-lg text-bolder">{{player.firstName}} {{player.lastName}}
-                                        <i class="fa fa-external-link text-sm" *ngIf="player.showProfile"></i></div>
-                                        <h6 class="text-xs">Recruitment: {{ player.athletic?.recruitment}}</h6>
-                                      </div>
-                                  </div>
-                                  </td>
-                                  <td>
-                                      <p class="text-lg font-weight-bold mb-0">{{player.academic?.gradYear}}</p>
-                                  </td>
-                                  <td class="align-middle text-center text-sm">
-                                      <p class="text-lg font-weight-bold mb-0">{{player.athletic?.position}}</p>
-                                  </td>
-                                  <td class="align-middle text-center text-sm" *ngIf="getCurrentTeamRoster(player) as roster">
-                                      <p class="text-lg font-weight-bold mb-0">{{roster.jersey }}</p>
-                                  </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        </div>
-                    </div>
+                <h3>Roster</h3>
+                <div class="table-responsive">
+                <table class="table align-items-center mb-0">
+                    <thead>
+                    <tr>
+                        <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Player</th>
+                        <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 ps-2">Grad Year</th>
+                        <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Positions</th>
+                        <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Jersey</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let player of players" (click)="player.showProfile ? viewProfile(player._id) :  null">
+                          <td>
+                          <div class="d-flex px-2 py-1">
+                              <div>
+                                <img src="{{player.picUrl || './assets/img/SBV_Logo_Photo.png'}}" class="avatar avatar-xl me-2">
+                              </div>
+                              <div class="d-flex flex-column justify-content-center">
+                              <div class="mb-0 text-lg text-bolder">{{player.firstName}} {{player.lastName}}
+                                <i class="fa fa-external-link text-sm" *ngIf="player.showProfile"></i></div>
+                                <h6 class="text-xs">Recruitment: {{ player.athletic?.recruitment}}</h6>
+                              </div>
+                          </div>
+                          </td>
+                          <td>
+                              <p class="text-lg font-weight-bold mb-0">{{player.academic?.gradYear}}</p>
+                          </td>
+                          <td class="align-middle text-center text-sm">
+                              <p class="text-lg font-weight-bold mb-0">{{player.athletic?.position}}</p>
+                          </td>
+                          <td class="align-middle text-center text-sm" *ngIf="getCurrentTeamRoster(player) as roster">
+                              <p class="text-lg font-weight-bold mb-0">{{roster.jersey }}</p>
+                          </td>
+                        </tr>
+                    </tbody>
+                </table>
                 </div>
             </div>
-            <div class="col-lg-6 col-sm-10 px-2">
-                <div class="card card-plain card-blog ms-1"  id="schedule">
-                    <div class="card-title">
-                        <h3>Schedule</h3>
-                    </div>
-                    <div class="card-body px-0">
-                        <div class="table-responsive">
-                            <table class="table align-items-center mb-0">
-                                <thead>
-                                    <tr>
-                                        <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 ps-2">Opp</th>
-                                        <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 d-none d-md-block">Location</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let game of team.games">
-                                        <td style="word-wrap: break-word">
-                                            <p class="text-md font-weight-bold mb-0">{{game.opponent}}</p>
-                                            <ng-container *ngIf="game.league == 'ECNL-RL' ">
-                                                <span class="badge bg-gradient-info">{{game.league}}</span>
-                                            </ng-container>
-                                            <ng-container *ngIf="game.league == 'Heartland' ">
-                                                <span class="badge bg-gradient-secondary">{{ game.league}}</span>
-                                            </ng-container>
-                                            <ng-container *ngIf="game.league == 'State Cup' ">
-                                                <span class="badge bg-gradient-primary">{{ game.league}}</span>
-                                            </ng-container>
-                                            <ng-container *ngIf="game.league == 'ECNL-RL Showcase' ">
-                                              <span class="badge bg-gradient-success">{{ game.league}}</span>
-                                            </ng-container>
-                                            <div class="d-block d-sm-none">
-                                                <p class="text-sm font-weight-bold mb-0">{{game.game_time | date:'short'}}</p>
-                                                <h6 class="mb-0 text-sm">{{game.location }}</h6>
-                                                <p class="text-xs text-secondary mb-0">Field #{{game.field}}</p>
-                                            </div>
-                                        </td>
-                                        <td class="d-none d-md-block">
-                                            <p class="text-sm font-weight-bold mb-0">{{game.game_time | date:'short'}}</p>
-                                            <h6 class="mb-0 text-sm">{{game.location }}</h6>
-                                            <p class="text-xs text-secondary mb-0">Field #{{game.field}}</p>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-lg-6 col-sm-10 px-2" *ngIf="team.games">
+              <app-games [games]="team.games"></app-games>
             </div>
-
-
         </div>
     </div>
 </section>
