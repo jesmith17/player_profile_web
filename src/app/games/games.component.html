@@ -1,0 +1,42 @@
+<ng-container *ngIf="games">
+<h3>Schedule</h3>
+<div class="table-responsive">
+  <table class="table align-items-center mb-0">
+    <thead>
+    <tr>
+      <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 ps-2">Opp</th>
+      <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 d-none d-md-block">Location</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let game of games">
+      <td style="word-wrap: break-word">
+        <p class="text-md font-weight-bold mb-0">{{game.opponent}}</p>
+        <ng-container *ngIf="game.league == 'ECNL-RL' ">
+          <span class="badge bg-gradient-info">{{game.league}}</span>
+        </ng-container>
+        <ng-container *ngIf="game.league == 'Heartland' ">
+          <span class="badge bg-gradient-secondary">{{ game.league}}</span>
+        </ng-container>
+        <ng-container *ngIf="game.league == 'State Cup' ">
+          <span class="badge bg-gradient-primary">{{ game.league}}</span>
+        </ng-container>
+        <ng-container *ngIf="game.league == 'ECNL-RL Showcase' ">
+          <span class="badge bg-gradient-success">{{ game.league}}</span>
+        </ng-container>
+        <div class="d-block d-sm-none">
+          <p class="text-sm font-weight-bold mb-0">{{game.game_time | date:'short'}}</p>
+          <h6 class="mb-0 text-sm">{{game.location }}</h6>
+          <p class="text-xs text-secondary mb-0">Field #{{game.field}}</p>
+        </div>
+      </td>
+      <td class="d-none d-md-block">
+        <p class="text-sm font-weight-bold mb-0">{{game.game_time | date:'short'}}</p>
+        <h6 class="mb-0 text-sm">{{game.location }}</h6>
+        <p class="text-xs text-secondary mb-0">Field #{{game.field}}</p>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</ng-container>
