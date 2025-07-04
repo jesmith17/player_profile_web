@@ -26,8 +26,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-sm-10 team-column" *ngIf="players | async as players">
-                <h3>Roster</h3>
-                <span class="badge badge-primary">{{players.length}}</span>
+                <h3>Roster<span class="badge text-dark text-sm">({{players.length}})</span></h3>
+
                 <div class="table-responsive">
                 <table class="table align-items-center mb-0">
                     <thead>
