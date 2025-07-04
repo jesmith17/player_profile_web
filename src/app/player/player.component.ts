@@ -21,6 +21,7 @@ url: string;
 data: Observable<Profile> | undefined
 user: Observable<User | null>
   games: Game[] = [];
+canEditPlayer:boolean = false;
 
 
 constructor(private service: AppService, private route: ActivatedRoute, public authService: AuthService, private analyticsService: AnalyticsService){
@@ -32,6 +33,9 @@ ngOnInit(): void {
   this.route.paramMap.subscribe( paramMap => {
     var id = paramMap.get('id')!;
     this.data = this.service.getProfile(id);
+    this.user.subscribe((user:User | null) => {
+      this.canEditPlayer = this.authService.canEditPlayer(user!, id);
+    })
     this.data.subscribe(data => {
       const teamRequests = data.athletic.teams.map(roster =>
         this.service.getTeam(roster.team_id)

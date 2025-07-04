@@ -14,9 +14,9 @@ import {Role, User} from './models/user';
 export class AuthService {
 
   private jwtHelper = new JwtHelperService();
-  private userSubject = new BehaviorSubject<User | null >(null);
+  private userSubject = new BehaviorSubject<User | null>(null);
 
-  public currentUser$ = this.userSubject.asObservable();
+  public currentUser$:Observable<User | null> = this.userSubject.asObservable();
 
   private token?: string |  null;
 
