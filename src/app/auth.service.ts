@@ -21,11 +21,17 @@ export class AuthService {
   private token?: string |  null;
 
   constructor(private http: HttpClient) {
+    console.log('The authService constructor got called')
     this.token = localStorage.getItem('currentUser');
-    if (this.hasValidToken() && this.token != null){
-      // Retrieve user and load.
-      this.getUser(this.jwtHelper.decodeToken(this.token)['jti']);
+    console.log(this.token)
+    if (this.hasValidToken()){
+      console.log('The token is valid so we are calling to get the user from the DB')
+      this.getUser();
     }
+
+    this.currentUser$.subscribe(currentUser => {
+      console.log(`The currentUser object got updated and is now ${this.currentUser$}`)
+    })
   }
 
   login(username: string, password: string): Observable<boolean> {
@@ -47,16 +53,18 @@ export class AuthService {
       );
   }
 
- getUser(jti: string): void {
-   this.http.get<User>(environment.apiUrl + `/users/sessions`).subscribe((user:User) => {
-     this.userSubject.next(user)
-   })
+ getUser(): void {
+      this.http.get<User>(environment.apiUrl + `/users/sessions`).subscribe((user: User) => {
+        this.userSubject.next(user)
+      })
  }
 
  canEditPlayer(user:User, playerId:string){
-   if (user.role == Role.ADMIN){
+   if (!user) return false
+   if (user.role == Role.ADMIN) {
      return true;
    } else return user.editableIds.includes(playerId);
+
  }
 
   logout() {
@@ -68,7 +76,13 @@ export class AuthService {
   }
 
   public hasValidToken(): boolean {
-    return this.token != null && !this.jwtHelper.isTokenExpired(this.token);
+
+    if (!this.token) {
+      return false
+    } else {
+      return !this.jwtHelper.isTokenExpired(this.token);
+    }
+
   }
 
 

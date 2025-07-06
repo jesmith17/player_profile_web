@@ -10,4 +10,6 @@ export interface Team {
     games: Game[];
     team_logo: string;
     social_media: SocialMedia[];
+    season: string;
+    archived: boolean
 }

@@ -1,5 +1,6 @@
 <div  *ngIf="data | async as data">
-<section class="py-sm-2 py-1 ">
+<ng-container *ngIf="data.showProfile; else privateProfile">
+  <section class="py-sm-2 py-1 ">
     <div class="container">
       <div class="row pt-5">
         <div class="d-flex justify-content-between align-items-center mb-2">
@@ -123,5 +124,20 @@
     </div>
   <app-qr-card></app-qr-card>
   </section>
+  </ng-container>
+  <ng-template #privateProfile>
+    <section class="py-sm-2 py-1 ">
+      <div class="container">
+        <div class="row pt-5">
+            <div class="row">
+              <h5>Profile is Private</h5>
+            </div>
+            <div class="row">
+              <p>This player has chosen not to make their profile public at this time.</p>
+            </div>
+        </div>
+      </div>
+    </section>
+  </ng-template>
   <!-- END Blogs w/ 4 cards w/ image & text & link -->
 </div>
