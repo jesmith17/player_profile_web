@@ -21,11 +21,8 @@ export class AuthService {
   private token?: string |  null;
 
   constructor(private http: HttpClient) {
-    console.log('The authService constructor got called')
     this.token = localStorage.getItem('currentUser');
-    console.log(this.token)
     if (this.hasValidToken()){
-      console.log('The token is valid so we are calling to get the user from the DB')
       this.getUser();
     }
 
