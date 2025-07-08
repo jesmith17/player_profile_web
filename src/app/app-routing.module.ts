@@ -11,6 +11,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { QrgeneratorComponent } from './qrgenerator/qrgenerator.component';
 import { TeamSearchComponent } from './team-search/team-search.component';
 import { TeamDetailComponent } from './team-detail/team-detail.component';
+import {RegisterComponent} from "./register/register.component";
 
 const routes: Routes = [
   {path: 'profile', component: ProfileComponent, children: [
@@ -33,6 +34,7 @@ const routes: Routes = [
     }
   ]},
   {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
   {path: 'logout', component: LogoutComponent},
   {path: 'home', component: LandingComponent},
   {path: 'qrcode', component: QrgeneratorComponent},

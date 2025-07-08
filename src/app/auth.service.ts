@@ -72,6 +72,10 @@ export class AuthService {
     });
   }
 
+  createUser(user:any) {
+    return this.http.post<User>(environment.apiUrl + '/users', user)
+  }
+
   public hasValidToken(): boolean {
 
     if (!this.token) {
