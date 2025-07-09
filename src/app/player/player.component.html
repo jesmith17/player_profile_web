@@ -1,5 +1,5 @@
 <div  *ngIf="data | async as data">
-<ng-container *ngIf="data.showProfile; else privateProfile">
+<ng-container *ngIf="data.showProfile || this.canEditPlayer; else privateProfile">
   <section class="py-sm-2 py-1 ">
     <div class="container">
       <div class="row pt-5">
