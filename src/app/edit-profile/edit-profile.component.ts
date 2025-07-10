@@ -38,7 +38,8 @@ export class EditProfileComponent implements OnInit {
       height: [''],
       weight: [''],
       picUrl: ['', Validators.required],
-      social_media: this.fb.array([])
+      social_media: this.fb.array([]),
+      showProfile: ['', Validators.required],
 
     })
 
@@ -104,6 +105,7 @@ export class EditProfileComponent implements OnInit {
             this.addPosition();
           }
           this.athleticsForm.patchValue(data.athletic);
+
           for (var highlight of data.highlights){
             this.addHighlight();
           }
