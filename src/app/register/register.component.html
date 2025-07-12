@@ -1,53 +1,62 @@
-<div class="row-cols-sm-auto">
-  <div class="card card-plain align-items-center mat-elevation-z6">
-    <div class="card-header">
-      <h3 class="card-title">Register</h3>
-      <p>Signup for an account using the form below</p>
-    </div>
-    <ng-container *ngIf="successMessage">
-      <div class="alert alert-success text-white" role="alert">
-        <strong>Success</strong> {{successMessage}}
-        <p>
-          You will be redirected to the login page in 3 seconds. Or click
-          <a [routerLink]="['/login']">Login</a> to go directly
-        </p>
+<section>
+  <div class="page-header min-vh-100">
+    <div class="container">
+      <div class="row">
+        <div class="d-flex justify-content-center mx-lg-0 mx-auto">
+
+          <div class="card card-plain">
+            <div class="card-header">
+              <h3 class="card-title">Register</h3>
+              <p>Signup for an account using the form below</p>
+            </div>
+            <ng-container *ngIf="successMessage">
+              <div class="alert alert-success text-white" role="alert">
+                <strong>Success</strong> {{successMessage}}
+                <p>
+                  You will be redirected to the login page in 3 seconds. Or click
+                  <a [routerLink]="['/login']">Login</a> to go directly
+                </p>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="errorMessage">
+              <div class="alert alert-danger text-white" role="alert">
+                <strong>Error</strong> {{errorMessage}}
+              </div>
+            </ng-container>
+            <div class="card-body">
+              <form class="g-3" [formGroup]="registerForm" (ngSubmit)="register()">
+                <div class="mb-3 form-floating">
+                  <input formControlName="email" type="email" name="email" id="email" class="form-control"/>
+                  <label for="email" class="form-label">Email</label>
+                </div>
+                <div class="mb-3 form-floating">
+                  <input formControlName="firstName" type="firstName" name="firstName" id="firstName" class="form-control"/>
+                  <label for="firstName" class="form-label">First Name</label>
+                </div>
+                <div class="mb-3 form-floating">
+                  <input formControlName="lastName" type="lastName" name="lastName" id="lastName" class="form-control"/>
+                  <label for="lastName" class="form-label">LastName</label>
+                </div>
+                <div class="mb-3 form-floating">
+                  <select formControlName="role" type="role" name="role" id="role" class="form-control">
+                    <option value="PARENT">Parent</option>
+                    <option value="PLAYER">Player</option>
+                  </select>
+                  <label for="role" class="form-label">Role</label>
+                </div>
+                <div class="mb-3 form-floating">
+                  <input formControlName="password" type="password" name="password" id="password" class="form-control"/>
+                  <label for="password" class="form-label">Password</label>
+                </div>
+                <div class="form-floating">
+                  <button class="btn bg-gradient-primary mx-1" type="submit">Register</button>
+                  <button class="btn btn-outline-secondary" type="reset">Reset</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
-    </ng-container>
-    <ng-container *ngIf="errorMessage">
-      <div class="alert alert-danger text-white" role="alert">
-        <strong>Error</strong> {{errorMessage}}
-      </div>
-    </ng-container>
-    <div class="card-body">
-      <form class="g-3" [formGroup]="registerForm" (ngSubmit)="register()">
-        <div class="mb-3 form-floating">
-          <input formControlName="email" type="email" name="email" id="email" class="form-control"/>
-          <label for="email" class="form-label">Email</label>
-        </div>
-        <div class="mb-3 form-floating">
-          <input formControlName="firstName" type="firstName" name="firstName" id="firstName" class="form-control"/>
-          <label for="firstName" class="form-label">First Name</label>
-        </div>
-        <div class="mb-3 form-floating">
-          <input formControlName="lastName" type="lastName" name="lastName" id="lastName" class="form-control"/>
-          <label for="lastName" class="form-label">LastName</label>
-        </div>
-        <div class="mb-3 form-floating">
-          <select formControlName="role" type="role" name="role" id="role" class="form-control">
-            <option value="PARENT">Parent</option>
-            <option value="PLAYER">Player</option>
-          </select>
-          <label for="role" class="form-label">Role</label>
-        </div>
-        <div class="mb-3 form-floating">
-          <input formControlName="password" type="password" name="password" id="password" class="form-control"/>
-          <label for="password" class="form-label">Password</label>
-        </div>
-        <div class="form-floating">
-          <button class="btn bg-gradient-primary mx-1" type="submit">Register</button>
-          <button class="btn btn-outline-secondary" type="reset">Reset</button>
-        </div>
-      </form>
     </div>
   </div>
-</div>
+</section>

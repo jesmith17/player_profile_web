@@ -11,8 +11,9 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.component.sass']
 })
 export class LoginComponent implements OnInit{
-  
+
   loginForm: FormGroup;
+  errorMessage?: string;
 
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router){
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit{
       password: ['',[Validators.required]]
     });
   }
-  
+
   ngOnInit(): void {
   }
 
@@ -30,6 +31,8 @@ export class LoginComponent implements OnInit{
     this.authService.login(this.loginForm.get("email")?.value, this.loginForm.get("password")?.value).subscribe(success => {
       if (success) {
         this.router.navigate(['/home']);
+      } else {
+        this.errorMessage= 'Login Failed. Please check your email and password and try again'
       }
     })
   }

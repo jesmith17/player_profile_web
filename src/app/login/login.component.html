@@ -1,24 +1,47 @@
-<div class="row-cols-sm-auto">
-    <div class="card card-plain align-items-center mat-elevation-z6">
-        <div class="card-header">
-            <h3 class="card-title">Login</h3>
-            <p>You must login to access administrative pages</p>
+<section>
+  <div class="page-header min-vh-100">
+    <div class="container">
+      <div class="row">
+        <div class="d-flex justify-content-center mx-lg-0 mx-auto">
+          <div class="card card-plain">
+            <div class="card-header pb-0 text-left">
+              <h4 class="font-weight-bolder">Sign In</h4>
+              <p class="mb-0">Enter your email and password to sign in</p>
+            </div>
+            <ng-container *ngIf="errorMessage">
+              <div class="alert alert-danger text-white" role="alert">
+                <strong>Error</strong> {{errorMessage}}
+              </div>
+            </ng-container>
+
+            <div class="card-body">
+              <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <div class="mb-3">
+                  <input type="email" class="form-control form-control-lg" placeholder="Email" aria-label="Email" aria-describedby="email-addon" formControlName="email">
+                </div>
+                <div class="mb-3">
+                  <input type="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="password-addon"  formControlName="password">
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign in</button>
+                </div>
+              </form>
+            </div>
+            <div class="card-footer text-center pt-0 px-lg-2 px-1">
+              <p class="mb-4 text-sm mx-auto">
+                Don't have an account?
+                <a [routerLink]="['/register']" class="text-primary text-gradient font-weight-bold">Sign up</a>
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="card-body">
-            <form class="g-3" [formGroup]="loginForm" (ngSubmit)="login()">
-                <div class="mb-3 form-floating">
-                    <input formControlName="email" type="email" name="email" id="email" class="form-control"/>
-                    <label for="email" class="form-label">Email</label>
-                </div>
-                <div class="mb-3 form-floating">
-                    <input formControlName="password" type="password" name="password" id="password" class="form-control"/>
-                    <label for="password" class="form-label">Password</label>
-                </div>
-                <div class="form-floating">
-                    <button class="btn bg-gradient-primary mx-1" type="submit">Login</button>
-                    <button class="btn btn-outline-secondary" type="reset">Reset</button>
-                </div>
-            </form>
-        </div>
+<!--        <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">-->
+
+<!--          <div class="position-relative bg-gradient-faded-secondary h-100 d-flex flex-column justify-content-center">-->
+<!--            <img src="../assets/img/team-huddle.png" alt="pattern-lines" class="position-relative opacity-5 start-0 border-radius-lg h-100 w-100">-->
+<!--          </div>-->
+<!--        </div>-->
+      </div>
     </div>
-</div>
+  </div>
+</section>
