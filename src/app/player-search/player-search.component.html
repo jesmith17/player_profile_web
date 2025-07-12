@@ -5,14 +5,14 @@
             <div class="card">
                 <form [formGroup]="searchForm">
                   <div class="row">
-                  <div class="col-8">
+                  <div class="col">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Player Name" aria-label="Player Name" aria-describedby="button-addon2" formControlName="name">
-                        <button class="btn bg-gradient-info mb-0 text-white text-md" type="button" id="button-addon2" (click)="searchPlayers(searchForm)" [disabled]="searchForm.invalid"><i class="fa fa-search px-2"></i>Search</button>
+                        <button class="btn bg-gradient-info mb-0 text-white text-md" type="button" id="button-addon2" (click)="searchPlayers(searchForm)" [disabled]="searchForm.invalid"><i class="fa fa-search px-2"></i><span class="d-none d-md-inline">Search</span></button>
                     </div>
                   </div>
-                    <div class="col-4" *ngIf="authService.currentUser$ ">
-                      <a [routerLink]="['/profile/new']" class="btn bg-gradient-primary mb-0 ms-2 text-white text-md"><i class="fa fa-plus px-2"></i>New Profile</a>
+                    <div class="col-md-2 col-sm-2" *ngIf="authService.currentUser$ ">
+                      <a [routerLink]="['/profile/new']" class="btn bg-gradient-primary text-white text-md"><i class="fa fa-plus px-2"></i><span class="d-none d-md-inline">New Profile</span></a>
                     </div>
                   </div>
                 </form>
@@ -24,33 +24,37 @@
                     <tr>
                         <th class="text-uppercase text-secondary text-md font-weight-bolder opacity-7">Player</th>
                         <th class="text-uppercase text-secondary text-md font-weight-bolder opacity-7 ps-2">Grad Year</th>
-                        <th class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">Positions</th>
-                        <th class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7">Highlights</th>
+                        <th class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7 d-none d-md-table-cell">Positions</th>
+                        <th class="text-center text-uppercase text-secondary text-md font-weight-bolder opacity-7 d-none d-md-table-cell">Highlights</th>
                     </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let player of data" (click)="viewProfile(player._id)">
-                            <td>
+                          <td>
                             <div class="d-flex px-2 py-1">
-                                <div>
-                                <img src="{{player.picUrl || './assets/img/SBV_Logo_Photo.png'}}" class="avatar avatar-xxl me-3 border-radius-sm img">
+                              <div>
+                                <img src="{{player.picUrl || './assets/img/SBV_Logo_Photo.png'}}"
+                                     class="avatar-responsive me-2">
+                              </div>
+                              <div class="d-flex flex-column justify-content-center">
+                                <div class="mb-0 text-sm text-md-lg text-bolder">
+                                  {{player.firstName}} {{player.lastName}}
+                                  <i class="fa fa-external-link text-sm" *ngIf="player.showProfile"></i>
                                 </div>
-                                <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-md">{{player.firstName}} {{player.lastName}}</h6>
-                                <p class="text-md text-secondary mb-0">{{player.email}}</p>
-                                </div>
+                                <h6 class="text-sm d-block d-sm-none">{{player.athletic.position}}</h6>
+                                <h6 class="text-sm">Recruitment: {{ player.athletic?.recruitment}}</h6>
+                              </div>
                             </div>
-                            </td>
-                            <td>
-                                <p class="text-md font-weight-bold mb-0">{{player.academic.gradYear}}</p>
-                            </td>
-                            <td class="align-middle text-center text-sm">
-                                <p class="text-md font-weight-bold mb-0">{{player.athletic.position}}</p>
-                            </td>
-                            <td class="align-middle text-center">
-                                <p class="text-md font-weight-bold mb-0" *ngIf="player.highlights && player.highlights.length > 0"><a href="{{player.highlights[0].url}}" target="_blank"><i class="fa fa-youtube px-2"></i>{{player.highlights[0].description}}</a></p>
-                            </td>
-
+                          </td>
+                          <td class="align-middle text-center">
+                            <p class="text-lg font-weight-bold mb-0">{{player.academic.gradYear}}</p>
+                          </td>
+                          <td class="align-middle text-center text-sm d-none d-sm-table-cell">
+                            <p class="text-lg font-weight-bold mb-0">{{player.athletic.position}}</p>
+                          </td>
+                          <td class="align-middle text-center text-sm d-none d-sm-table-cell">
+                            <p class="text-md font-weight-bold mb-0" *ngIf="player.highlights && player.highlights.length > 0"><a href="{{player.highlights[0].url}}" target="_blank"><i class="fa fa-youtube px-2"></i>{{player.highlights[0].description}}</a></p>
+                          </td>
                         </tr>
                     </tbody>
                 </table>

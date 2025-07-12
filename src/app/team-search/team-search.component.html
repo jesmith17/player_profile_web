@@ -6,7 +6,7 @@
                 <form [formGroup]="searchForm">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Team Name" aria-label="Team Name" aria-describedby="button-addon2" formControlName="name">
-                        <button class="btn bg-gradient-info mb-0 text-white" type="button" id="button-addon2" (click)="searchTeams(searchForm)" [disabled]="searchForm.invalid"><i class="fa fa-search px-2"></i>Search</button>
+                        <button class="btn bg-gradient-info mb-0 text-white" type="button" id="button-addon2" (click)="searchTeams(searchForm)" [disabled]="searchForm.invalid"><i class="fa fa-search px-2"></i><span class="d-none d-md-inline">Search</span></button>
                     </div>
                 </form>
             </div>
@@ -16,9 +16,9 @@
                     <thead>
                     <tr>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Team</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Season</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Coach</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Coach Email</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 d-none d-md-table-cell">Season</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 d-none d-md-table-cell">Coach</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 d-none d-md-table-cell">Coach Email</th>
                         <th class="text-secondary opacity-7"></th>
                     </tr>
                     </thead>
@@ -27,20 +27,23 @@
                             <td>
                             <div class="d-flex px-2 py-1">
                                 <div>
-                                <img src="{{team.team_logo}}" class="avatar avatar-xl me-3">
+                                  <img src="{{team.team_logo}}" class="avatar avatar-xl me-3">
                                 </div>
                                 <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-xs">{{team.team_name}}</h6>
+                                  <h6 class="mb-0 text-xs">{{team.team_name}}</h6>
+                                  <h6 class="text-sm d-block d-sm-none">{{team.season}} Season</h6>
+                                  <h6 class="text-sm d-block d-sm-none">{{team.coach}}</h6>
+                                  <h6 class="text-sm d-block d-sm-none">{{team.coach_email}}</h6>
                                 </div>
                             </div>
                             </td>
-                          <td>
+                          <td class="d-none d-md-table-cell">
                             <p class="text-sm font-weight-bold mb-0">{{team.season}}</p>
                           </td>
-                            <td>
+                            <td class="d-none d-md-table-cell">
                                 <p class="text-sm font-weight-bold mb-0">{{team.coach}}</p>
                             </td>
-                            <td class="align-middle text-center text-sm">
+                            <td class="align-middle text-center text-sm d-none d-md-table-cell">
                                 <p class="text-sm font-weight-bold mb-0">{{team.coach_email}}</p>
                             </td>
                         </tr>

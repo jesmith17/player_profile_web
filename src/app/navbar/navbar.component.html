@@ -1,6 +1,48 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-gradient-dark bg-white py-3">
+<nav class="navbar navbar-expand-lg navbar-dark bg-gradient-dark bg-white">
     <div class="container">
-      <span class="navbar-brand text-gradiant text-white text-lg"><a [routerLink]="['/profile/search']" class="text-white text-lg text-gradiant"><i class="fa fa-user px-2"></i>Player Profile</a></span>
+      <span class="navbar-brand"><a [routerLink]="['/profile/search']">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 75" width="250" height="75">
+          <!-- Card background -->
+          <rect x="8" y="20" width="48" height="32" rx="4" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+
+                  <!-- Profile avatar circle -->
+          <circle cx="20" cy="30" r="4" fill="#3b82f6"/>
+
+                  <!-- Profile lines (representing text) -->
+          <rect x="28" y="27" width="20" height="2" rx="1" fill="#6b7280"/>
+          <rect x="28" y="32" width="16" height="2" rx="1" fill="#9ca3af"/>
+          <rect x="28" y="37" width="12" height="2" rx="1" fill="#d1d5db"/>
+
+                  <!-- Stats/metrics bars -->
+          <rect x="12" y="42" width="8" height="2" rx="1" fill="#10b981"/>
+          <rect x="22" y="42" width="12" height="2" rx="1" fill="#3b82f6"/>
+          <rect x="36" y="42" width="6" height="2" rx="1" fill="#f59e0b"/>
+
+                  <!-- Share/connect icon -->
+          <g transform="translate(50, 25)">
+            <circle cx="0" cy="0" r="8" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1"/>
+            <circle cx="0" cy="0" r="2" fill="#6b7280"/>
+            <circle cx="-4" cy="-4" r="1.5" fill="#3b82f6"/>
+            <circle cx="4" cy="4" r="1.5" fill="#10b981"/>
+            <line x1="0" y1="0" x2="-4" y2="-4" stroke="#6b7280" stroke-width="1"/>
+            <line x1="0" y1="0" x2="4" y2="4" stroke="#6b7280" stroke-width="1"/>
+          </g>
+
+                  <!-- Text -->
+          <text x="75" y="35" font-family="Arial, sans-serif" font-size="24" font-weight="600" fill="#ffffff">
+            AthleteCard
+          </text>
+          <text x="75" y="52" font-family="Arial, sans-serif" font-size="13" fill="#e5e7eb">
+            Your Athletic Profile, Perfected
+          </text>
+
+                  <!-- Accent dots -->
+          <circle cx="250" cy="25" r="3" fill="#3b82f6" opacity="0.9"/>
+          <circle cx="260" cy="35" r="6" fill="#10b981" opacity="0.9"/>
+          <circle cx="255" cy="15" r="4" fill="#f59e0b" opacity="0.9"/>
+        </svg>
+      </a>
+      </span>
       <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon mt-2">
           <span class="navbar-toggler-bar bar1"></span>
@@ -25,28 +67,66 @@
           </li>
         </ul>
         <ul class="navbar-nav navbar-nav-hover w-100">
-          <ng-container *ngIf="!user">
-            <li class="nav-item my-auto ms-3 ms-lg-0 d-none d-md-block">
-              <a [routerLink]="['/login']" class="btn btn-md bg-gradient-primary btn-round mb-0 ms-4 mt-2 mt-md-0 text-white">Login</a>
+          <ng-container *ngIf="user">
+            <li class="nav-item dropdown dropdown-hover mx-2 ms-lg-5 text-white d-none d-md-block">
+              <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center text-white" id="dropdownMenuPages5" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-user text-lg leading-lg"></i>
+                <span class="ml-2 ps-2 text-md text-white">Profile</span>
+                <img src="../../assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1">
+              </a>
+              <div class="dropdown-menu dropdown-menu-animation dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages5">
+                <div class="d-none d-lg-block">
+                  <div class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center px-0">
+                    <div class="d-inline-block">
+                    </div>
+                    User Settings
+                  </div>
+                  <a  [routerLink]="['/profile']" class="dropdown-item border-radius-md">
+                    <span class="ps-3">Profile</span>
+                  </a>
+                  <a [routerLink]="['/logout']" class="dropdown-item border-radius-md">
+                    <span class="ps-3">Logout</span>
+                  </a>
+                </div>
+              </div>
             </li>
-            <li class="nav-item my-auto ms-3 ms-lg-0 d-none d-md-block">
-              <a [routerLink]="['/register']" class="btn btn-md bg-gradient-primary btn-round mb-0 ms-4 mt-2 mt-md-0 text-white">Register</a>
+            <li class="nav-item my-auto px-3 ms-lg-0 d-block d-md-none">
+              <a [routerLink]="['/profile']" class="mb-0 me-1 mt-2 mt-md-0 text-white">Profile</a>
+            </li>
+            <li class="nav-item my-auto ms-3 ms-lg-0 d-block d-md-none">
+              <a [routerLink]="['/logout']" class="mb-0 me-1 mt-2 mt-md-0 text-white">Logout</a>
             </li>
           </ng-container>
-          <li class="nav-item my-auto ms-3 ms-lg-0 d-none d-md-block" *ngIf="user">
-            <a [routerLink]="['/logout']" class="btn btn-md bg-gradient-primary btn-round mb-0 me-1 mt-2 mt-md-0 text-white">Logout</a>
-          </li>
           <ng-container *ngIf="!user">
+            <li class="nav-item dropdown dropdown-hover mx-2 ms-lg-5 text-white">
+              <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center text-white" id="dropdownMenuPages5" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-user text-lg leading-lg"></i>
+                <span class="ml-2 ps-2 text-md text-white">Profile</span>
+                <img src="../../assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1">
+              </a>
+              <div class="dropdown-menu dropdown-menu-animation dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" aria-labelledby="dropdownMenuPages5">
+                <div class="d-none d-lg-block">
+                  <div class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center px-0">
+                    <div class="d-inline-block">
+                    </div>
+                    User Settings
+                  </div>
+                  <a  [routerLink]="['/register']" class="dropdown-item border-radius-md">
+                    <span class="ps-3">Sign Up!</span>
+                  </a>
+                  <a [routerLink]="['/login']" class="dropdown-item border-radius-md">
+                    <span class="ps-3">Login</span>
+                  </a>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item my-auto px-3 ms-lg-0 d-block d-md-none">
+              <a [routerLink]="['/register']" class="mb-0 me-1 mt-2 mt-md-0 text-white">Register</a>
+            </li>
             <li class="nav-item my-auto ms-3 ms-lg-0 d-block d-md-none">
               <a [routerLink]="['/login']" class="mb-0 me-1 mt-2 mt-md-0 text-white">Login</a>
             </li>
-            <li class="nav-item my-auto ms-3 ms-lg-0 d-block d-md-none">
-              <a [routerLink]="['/register']" class="mb-0 me-1 mt-2 mt-md-0 text-white">Register</a>
-            </li>
           </ng-container>
-          <li class="nav-item my-auto ms-3 ms-lg-0 d-block d-md-none" *ngIf="user">
-            <a [routerLink]="['/logout']" class="mb-0 me-1 mt-2 mt-md-0 text-white">Logout</a>
-          </li>
         </ul>
       </div>
     </div>

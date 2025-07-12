@@ -6,17 +6,17 @@
         <div class="d-flex justify-content-between align-items-center mb-2">
           <h2 class="mb-0 text-gradiant text-dark">{{data.firstName}} {{data.lastName}}</h2>
           <ng-container *ngIf="user | async as user">
-            <a [routerLink]="['/profile', data._id,'edit']" class="btn btn-sm bg-gradient-info btn-round mb-0 me-1 mt-2 mt-md-0 text-white" *ngIf="authService.canEditPlayer(user, data._id)"><i class="fa fa-regular fa-pen-to-square mx-1"></i>Edit</a>
+            <a [routerLink]="['/profile', data._id,'edit']" class="btn btn-sm bg-gradient-info btn-round mb-0 me-1 mt-2 mt-md-0 text-white" *ngIf="authService.canEditPlayer(user, data._id)"><i class="fa fa-regular fa-pen-to-square text-md px-1"></i><span class="d-none d-md-inline">Edit</span></a>
           </ng-container>
           <h2 class="mb-0 text-end text-gradiant text-dark">Class Of {{data.academic.gradYear}}</h2>
         </div>
       </div>
       <div class="row py-2">
-        <div class="col-lg-3 col-md-5 col-sm-12">
+        <div class="col-lg-3 col-md-5 col-sm-12 pb-2 pb-md-7">
             <img class="img border-radius-lg img-fluid" src="{{data.picUrl}}" alt="Player Photo">
         </div>
         <div class="col-lg-9 col-md-8">
-          <p class="text-lg pb-2" style="white-space: pre-line">
+          <p class="text-lg mt-md-4" style="white-space: pre-line">
             {{data.bio}}
           </p>
           <div class="row">
